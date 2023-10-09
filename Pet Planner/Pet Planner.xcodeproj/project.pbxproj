@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D28505802ACFE474000FA305 /* Pet_PlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D285057F2ACFE474000FA305 /* Pet_PlannerApp.swift */; };
 		D28505822ACFE474000FA305 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28505812ACFE474000FA305 /* ContentView.swift */; };
 		D28505842ACFE476000FA305 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D28505832ACFE476000FA305 /* Assets.xcassets */; };
 		D28505872ACFE476000FA305 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D28505862ACFE476000FA305 /* Preview Assets.xcassets */; };
+		D28505982ACFEC03000FA305 /* Pet_PlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28505972ACFEC03000FA305 /* Pet_PlannerApp.swift */; };
+		D28505A22ACFF8F6000FA305 /* AddPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28505A12ACFF8F6000FA305 /* AddPetView.swift */; };
+		D28505A82AD002BD000FA305 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28505A72AD002BD000FA305 /* CoreDataProvider.swift */; };
+		D28505B12AD006E4000FA305 /* AnimalsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D28505AF2AD006E4000FA305 /* AnimalsModel.xcdatamodeld */; };
+		D28505B42AD01EC2000FA305 /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28505B32AD01EC2000FA305 /* AnimalService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D285057C2ACFE474000FA305 /* Pet Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pet Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D285057F2ACFE474000FA305 /* Pet_PlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet_PlannerApp.swift; sourceTree = "<group>"; };
 		D28505812ACFE474000FA305 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D28505832ACFE476000FA305 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D28505862ACFE476000FA305 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D28505972ACFEC03000FA305 /* Pet_PlannerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pet_PlannerApp.swift; path = ../../../../../../../.Trash/Pet_PlannerApp.swift; sourceTree = "<group>"; };
+		D28505A12ACFF8F6000FA305 /* AddPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetView.swift; sourceTree = "<group>"; };
+		D28505A72AD002BD000FA305 /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
+		D28505B02AD006E4000FA305 /* AnimalsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimalsModel.xcdatamodel; sourceTree = "<group>"; };
+		D28505B32AD01EC2000FA305 /* AnimalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +59,13 @@
 		D285057E2ACFE474000FA305 /* Pet Planner */ = {
 			isa = PBXGroup;
 			children = (
-				D285057F2ACFE474000FA305 /* Pet_PlannerApp.swift */,
-				D28505812ACFE474000FA305 /* ContentView.swift */,
+				D28505B22AD01E91000FA305 /* Services */,
+				D28505AB2AD0033D000FA305 /* Providers */,
+				D28505A02ACFF8DF000FA305 /* Views */,
+				D28505972ACFEC03000FA305 /* Pet_PlannerApp.swift */,
 				D28505832ACFE476000FA305 /* Assets.xcassets */,
 				D28505852ACFE476000FA305 /* Preview Content */,
+				D28505AF2AD006E4000FA305 /* AnimalsModel.xcdatamodeld */,
 			);
 			path = "Pet Planner";
 			sourceTree = "<group>";
@@ -65,6 +76,31 @@
 				D28505862ACFE476000FA305 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D28505A02ACFF8DF000FA305 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D28505812ACFE474000FA305 /* ContentView.swift */,
+				D28505A12ACFF8F6000FA305 /* AddPetView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D28505AB2AD0033D000FA305 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				D28505A72AD002BD000FA305 /* CoreDataProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		D28505B22AD01E91000FA305 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D28505B32AD01EC2000FA305 /* AnimalService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D28505B12AD006E4000FA305 /* AnimalsModel.xcdatamodeld in Sources */,
 				D28505822ACFE474000FA305 /* ContentView.swift in Sources */,
-				D28505802ACFE474000FA305 /* Pet_PlannerApp.swift in Sources */,
+				D28505A22ACFF8F6000FA305 /* AddPetView.swift in Sources */,
+				D28505B42AD01EC2000FA305 /* AnimalService.swift in Sources */,
+				D28505982ACFEC03000FA305 /* Pet_PlannerApp.swift in Sources */,
+				D28505A82AD002BD000FA305 /* CoreDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +382,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D28505AF2AD006E4000FA305 /* AnimalsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D28505B02AD006E4000FA305 /* AnimalsModel.xcdatamodel */,
+			);
+			currentVersion = D28505B02AD006E4000FA305 /* AnimalsModel.xcdatamodel */;
+			path = AnimalsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D28505742ACFE474000FA305 /* Project object */;
 }
