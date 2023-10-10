@@ -15,6 +15,11 @@
 		D28505A82AD002BD000FA305 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28505A72AD002BD000FA305 /* CoreDataProvider.swift */; };
 		D28505B12AD006E4000FA305 /* AnimalsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D28505AF2AD006E4000FA305 /* AnimalsModel.xcdatamodeld */; };
 		D28505B42AD01EC2000FA305 /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28505B32AD01EC2000FA305 /* AnimalService.swift */; };
+		D29600F32AD3EEB500421CCF /* PetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F22AD3EEB500421CCF /* PetsView.swift */; };
+		D29600F52AD3EF2000421CCF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F42AD3EF2000421CCF /* HomeView.swift */; };
+		D29600F72AD3F1C900421CCF /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F62AD3F1C900421CCF /* TaskView.swift */; };
+		D29600F92AD3FF0100421CCF /* PetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F82AD3FF0100421CCF /* PetDetailView.swift */; };
+		D29600FB2AD412C300421CCF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600FA2AD412C300421CCF /* TaskListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +32,11 @@
 		D28505A72AD002BD000FA305 /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		D28505B02AD006E4000FA305 /* AnimalsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimalsModel.xcdatamodel; sourceTree = "<group>"; };
 		D28505B32AD01EC2000FA305 /* AnimalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalService.swift; sourceTree = "<group>"; };
+		D29600F22AD3EEB500421CCF /* PetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsView.swift; sourceTree = "<group>"; };
+		D29600F42AD3EF2000421CCF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D29600F62AD3F1C900421CCF /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		D29600F82AD3FF0100421CCF /* PetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailView.swift; sourceTree = "<group>"; };
+		D29600FA2AD412C300421CCF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +92,12 @@
 			isa = PBXGroup;
 			children = (
 				D28505812ACFE474000FA305 /* ContentView.swift */,
+				D29600F42AD3EF2000421CCF /* HomeView.swift */,
+				D29600F62AD3F1C900421CCF /* TaskView.swift */,
 				D28505A12ACFF8F6000FA305 /* AddPetView.swift */,
+				D29600F22AD3EEB500421CCF /* PetsView.swift */,
+				D29600F82AD3FF0100421CCF /* PetDetailView.swift */,
+				D29600FA2AD412C300421CCF /* TaskListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,11 +188,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D29600F72AD3F1C900421CCF /* TaskView.swift in Sources */,
+				D29600F92AD3FF0100421CCF /* PetDetailView.swift in Sources */,
 				D28505B12AD006E4000FA305 /* AnimalsModel.xcdatamodeld in Sources */,
+				D29600FB2AD412C300421CCF /* TaskListView.swift in Sources */,
 				D28505822ACFE474000FA305 /* ContentView.swift in Sources */,
 				D28505A22ACFF8F6000FA305 /* AddPetView.swift in Sources */,
 				D28505B42AD01EC2000FA305 /* AnimalService.swift in Sources */,
 				D28505982ACFEC03000FA305 /* Pet_PlannerApp.swift in Sources */,
+				D29600F52AD3EF2000421CCF /* HomeView.swift in Sources */,
+				D29600F32AD3EEB500421CCF /* PetsView.swift in Sources */,
 				D28505A82AD002BD000FA305 /* CoreDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

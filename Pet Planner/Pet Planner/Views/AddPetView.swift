@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddPetView: View {
+    
+    @Environment(\.dismiss) private var dismiss
     @State private var name: String = ""
     
     let onSave: (String) -> Void
@@ -33,6 +35,7 @@ struct AddPetView: View {
             
             Button("Save") {
                 onSave(name)
+                dismiss()
             }.buttonStyle(.borderedProminent)
                 .foregroundColor(.white)
                 .padding(.top, 20)
@@ -42,9 +45,7 @@ struct AddPetView: View {
     }
 }
 
-struct AddPetView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddPetView(onSave: { (_) in } )
-    }
-}
 
+#Preview {
+    AddPetView(onSave: { (_) in } )
+}

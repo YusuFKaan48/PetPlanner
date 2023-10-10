@@ -19,8 +19,24 @@ class AnimalService {
     }
     
     static func saveAnimal(_ name: String) throws {
-        let animals = Animals(context: viewContext)
-        animals.name = name
+        let animal = Animals(context: viewContext)
+        animal.name = name
         try save()
     }
+    
+    static func saveTaskToMyAnimal(animal: Animals, taskTitle: String) throws {
+        let task = Task(context: viewContext)
+        task.title = taskTitle
+        animal.addToTasks(task)
+        try save()
+    }
+    
+    static func getTasksByList(animal: Animals) -> NSFetchRequest<Task> {
+        let request = Task.fetchRequest()
+        request.sortDescriptors = []
+        request.predicate = NSPredicate(format: "animals == %@ AND isDone == false", animal)
+        return request
+    }
+
 }
+
