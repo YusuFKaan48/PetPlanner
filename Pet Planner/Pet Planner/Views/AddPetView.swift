@@ -33,13 +33,26 @@ struct AddPetView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .textInputAutocapitalization(.none)
             
-            Button("Save") {
+            
+            Button {
                 onSave(name)
                 dismiss()
-            }.buttonStyle(.borderedProminent)
-                .foregroundColor(.white)
-                .padding(.top, 20)
-                .disabled(!isFormValid)
+            } label: {
+                Text("Save")
+                    .font(.system(size: 16))
+                    .fontWeight(.semibold)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: .infinity)
+                    .background(
+                        LinearGradient(gradient: Gradient(colors: [Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 1.0), Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.50)]), startPoint: .top, endPoint: .bottom)
+                    )
+                    .cornerRadius(12)
+            }
+            .padding(.horizontal, 120)
+            .padding(.top, 20)
+            .foregroundColor(.white)
+            .disabled(!isFormValid)
+
         }
         .padding()
     }

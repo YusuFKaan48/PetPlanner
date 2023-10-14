@@ -28,9 +28,16 @@ struct PetDetailView: View {
     
     var body: some View {
         VStack {
-            Text("Pet Name: \(animal.name ?? "Unknown")")
+            Text("\(animal.name ?? "Unknown")")
+                .fontWeight(.semibold)
                 .font(.title)
                 .padding()
+            
+            Text("\(animal.name ?? "Unknown")'s Tasks.")
+                .font(.system(size: 18))
+                .fontWeight(.medium)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 12)
 
     
             TaskListView(tasks: taskResults)
@@ -62,6 +69,6 @@ struct PetDetailView: View {
 }
 
 #Preview {
-    PetDetailView(animal: Animals())
+    PetDetailView(animal: PreviewData.animals)
 }
 

@@ -8,22 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
-        TabView {
+        TabView() {
             HomeView().tabItem {
-            Label("Home", systemImage: "house")
+                Label("Home", systemImage: "house")
             }
-            
+
             TaskView().tabItem {
-             Label("Task", systemImage: "calendar.badge.checkmark")
-             }
-            
-           PetsView().tabItem {
-            Label("Pets", systemImage: "heart")
+                Label("Task", systemImage: "calendar.badge.checkmark")
+            }
+
+            PetsView().tabItem {
+                Label("Pets", systemImage: "suit.heart")
             }
         }
+        .accentColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8))
     }
 }
+
 
 #Preview {
     ContentView()

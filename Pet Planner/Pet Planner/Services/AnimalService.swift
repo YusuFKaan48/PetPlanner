@@ -24,6 +24,18 @@ class AnimalService {
         try save()
     }
     
+    static func updateTask(task: Task, editConfig: TaskEditConfig) throws -> Bool {
+        
+        let taskToUpdate = task
+        taskToUpdate.isDone = editConfig.isDone
+        taskToUpdate.title = editConfig.title
+        taskToUpdate.taskDate = editConfig.hasDate ? editConfig.taskDate: nil
+        taskToUpdate.taskTime = editConfig.hasTime ? editConfig.taskTime: nil
+        
+        try save()
+        return true
+    }
+    
     static func saveTaskToMyAnimal(animal: Animals, taskTitle: String) throws {
         let task = Task(context: viewContext)
         task.title = taskTitle

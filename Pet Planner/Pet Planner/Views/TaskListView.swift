@@ -11,17 +11,39 @@ struct TaskListView: View {
     
     let tasks: FetchedResults<Task>
     
+    private func taskCheckedChanged(task: Task) {
+        var editConfig = TaskEditConfig(task: task)
+        editConfig.isDone = !task.isDone
+        
+        do {
+            let _ = try AnimalService.updateTask(task: task, editConfig: editConfig)
+        } catch {
+            print(error)
+        }
+    }
+    
     var body: some View {
         List(tasks) { task in
-            Text(task.title ?? "")
+            TaskDetailView(task: task) { event in
+                switch event {
+                    case .onSelect(let task):
+                        print("onSelect")
+                    case .onCheckedChange(let task):
+                     taskCheckedChanged(task: task)
+                    case .onEdit:
+                        print("onEdit")
+                }
+                
+            }
         }
+        .listStyle(PlainListStyle()) 
     }
 }
 
+
+
 /*
-struct TaskListView_Previews: PreviewProvider {
-    static var previews: some View {
+ #Preview {  
         TaskListView()
-    }
 } */
 
