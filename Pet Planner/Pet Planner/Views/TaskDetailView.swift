@@ -9,13 +9,16 @@ import SwiftUI
 
 enum TaskCellEvents {
     case onEdit
-    case onCheckedChange(Task)
+    case onCheckedChange(Task, Bool)
     case onSelect(Task)
 }
 
 struct TaskDetailView: View {
     
     let task: Task
+    let delay = Delay()
+    let isSelected: Bool
+    
     @State private var checked: Bool = false
     let onEvent: (TaskCellEvents) -> Void
     
@@ -37,6 +40,12 @@ struct TaskDetailView: View {
                 .opacity(0.4)
                 .onTapGesture {
                     checked.toggle()
+                    
+                    delay.cancel()
+                    
+                    delay.performWork {
+                        onEvent(.onCheckedChange(task, checked))
+                    }
                 }
             
             VStack(alignment: .leading) {
@@ -57,6 +66,7 @@ struct TaskDetailView: View {
             }
             Spacer()
             Image(systemName: "info.circle.fill")
+                .opacity(isSelected ? 1.0: 0.0)
                 .onTapGesture {
                     onEvent(.onEdit)
                 }
@@ -71,5 +81,5 @@ struct TaskDetailView: View {
 }
 
 #Preview {
-    TaskDetailView(task: PreviewData.tasks, onEvent: { _ in })
+    TaskDetailView(task: PreviewData.tasks, isSelected: false, onEvent: { _ in })
 }

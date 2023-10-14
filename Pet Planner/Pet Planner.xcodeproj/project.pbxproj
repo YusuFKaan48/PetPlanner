@@ -27,6 +27,7 @@
 		D29600F72AD3F1C900421CCF /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F62AD3F1C900421CCF /* TaskView.swift */; };
 		D29600F92AD3FF0100421CCF /* PetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F82AD3FF0100421CCF /* PetDetailView.swift */; };
 		D29600FB2AD412C300421CCF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600FA2AD412C300421CCF /* TaskListView.swift */; };
+		D2DCA4EA2ADA71E100D18F32 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA4E92ADA71E100D18F32 /* Delay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		D29600F62AD3F1C900421CCF /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		D29600F82AD3FF0100421CCF /* PetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailView.swift; sourceTree = "<group>"; };
 		D29600FA2AD412C300421CCF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		D2DCA4E92ADA71E100D18F32 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				D27780222AD6799800BAE993 /* CustomOperators.swift */,
+				D2DCA4E92ADA71E100D18F32 /* Delay.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				D29600F92AD3FF0100421CCF /* PetDetailView.swift in Sources */,
 				D28505B12AD006E4000FA305 /* AnimalsModel.xcdatamodeld in Sources */,
 				D277801E2AD54EBD00BAE993 /* Date+Extensions.swift in Sources */,
+				D2DCA4EA2ADA71E100D18F32 /* Delay.swift in Sources */,
 				D27780232AD6799800BAE993 /* CustomOperators.swift in Sources */,
 				D27780282AD67A2000BAE993 /* TaskEditConfig.swift in Sources */,
 				D29600FB2AD412C300421CCF /* TaskListView.swift in Sources */,

@@ -13,6 +13,10 @@ struct ReminderDetailView: View {
     @Binding var task: Task
     @State var editConfig: TaskEditConfig = TaskEditConfig()
     
+    private var isFormValid: Bool {
+        !editConfig.title.isEmpty
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -64,8 +68,13 @@ struct ReminderDetailView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        
-                    }
+                            do {
+                              let _ = try AnimalService.updateTask(task: task, editConfig: editConfig)
+                            } catch {
+                                print(error)
+                            }
+                        dismiss()
+                    }.disabled(!isFormValid)
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {

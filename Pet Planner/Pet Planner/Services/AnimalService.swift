@@ -36,6 +36,11 @@ class AnimalService {
         return true
     }
     
+    static func deleteTask(_ task: Task) throws {
+        viewContext.delete(task)
+        try save()
+    }
+    
     static func saveTaskToMyAnimal(animal: Animals, taskTitle: String) throws {
         let task = Task(context: viewContext)
         task.title = taskTitle

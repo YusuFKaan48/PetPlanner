@@ -20,8 +20,8 @@ struct TaskEditConfig {
     init(task: Task) {
         title = task.title ?? ""
         isDone = task.isDone
-        taskDate = task.taskDate
-        taskTime = task.taskTime
+        taskDate = task.taskDate ?? Date()
+        taskTime = task.taskTime ?? Date()
         hasDate = task.taskDate != nil
         hasTime = task.taskTime != nil
     }
