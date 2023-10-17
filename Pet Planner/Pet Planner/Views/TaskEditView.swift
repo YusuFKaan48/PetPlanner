@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ReminderDetailView: View {
+struct TaskEditView: View {
     
     @Environment(\.dismiss) private var dismiss
     @Binding var task: Task
@@ -87,9 +87,9 @@ struct ReminderDetailView: View {
     }
 }
 
-struct ReminderDetailView_Previews: PreviewProvider {
+struct TaskEditView_Previews: PreviewProvider {
     static var previews: some View {
-        ReminderDetailView(task: .constant(PreviewData.tasks))
+        TaskEditView(task: .constant(PreviewData.tasks))
     }
 }
 

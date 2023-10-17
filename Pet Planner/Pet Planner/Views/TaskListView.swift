@@ -57,7 +57,7 @@ struct TaskListView: View {
         }.onDelete(perform: deleteTask)
                .listStyle(PlainListStyle())
         .sheet(isPresented: $showTaskDetail) {
-            ReminderDetailView(task: Binding($selectedTask)!)
+            TaskEditView(task: Binding($selectedTask)!)
        
             }
          }.listStyle(PlainListStyle())

@@ -18,8 +18,10 @@ struct PetsView: View {
         NavigationStack {
             VStack {
                 Text("Pets")
+                    
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.title2)
+                
+                    .font(.system(size: 24))
                     .fontWeight(.semibold)
                     .padding(.horizontal, 12)
                 

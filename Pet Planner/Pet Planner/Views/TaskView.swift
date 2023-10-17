@@ -24,29 +24,49 @@ struct TaskView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Text("Task")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                    .font(.system(size: 24))
+                    .fontWeight(.semibold)
+                    .padding(.horizontal, 20)
+                
+                
                 Text("General total.")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.title2)
+                    .font(.system(size: 18))
                     .fontWeight(.medium)
-                    .padding(.horizontal, 12)
+                    .padding(.horizontal, 20)
+                    
                 
                 HStack {
                     
                     NavigationLink {
                         TaskListView(tasks: allCompletedResults)
                     } label: {
-                        TaskStatView( title: "done", count: taskStatsValues.allCompletedCount)
+                        TaskStatView( title: "done", count: taskStatsValues.allCompletedCount, icon: "checkmark.circle")
                     }
                     
                     NavigationLink {
                         TaskListView(tasks: allResults)
                     } label: {
-                        TaskStatView( title: "undone", count: taskStatsValues.allCount)
+                        TaskStatView( title: "undone", count: taskStatsValues.allCount, icon: "circle")
                     }
 
-                }.onAppear {
+                }.padding(12)
+                .onAppear {
                     taskStatsValues = taskStatBuilder.build(myListResults: myListResults)
                 }
+                
+                Text("Tasks.")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 18))
+                    .fontWeight(.medium)
+                    .padding(.horizontal, 20)
+                  
+                
+                TaskListView(tasks: allResults).padding(.trailing, 20)
+               
             }
         }
     }

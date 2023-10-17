@@ -39,20 +39,23 @@ struct TaskStatsBuilder {
     }
     
     private func calculateTodaysCount(tasks: [Task]) -> Int {
-        return tasks.reduce(0) { result, task in
-            let isToday = task.taskDate?.isToday ?? false
-            return isToday ? result + 1: result
-        }
-    }
-    
-    private func calculateTodaysCompletedCount(tasks: [Task]) -> Int {
-        return tasks.reduce(0) { result, task in
-            if task.isDone && task.taskDate?.isToday ?? false {
-                return result + 1
+            return tasks.reduce(0) { result, task in
+                
+                if !task.isDone && task.taskDate?.isToday ?? false {
+                    return result + 1
+                }
+                return result
             }
-            return result
         }
-    }
+        
+        private func calculateTodaysCompletedCount(tasks: [Task]) -> Int {
+            return tasks.reduce(0) { result, task in
+                if task.isDone && task.taskDate?.isToday ?? false {
+                    return result + 1
+                }
+                return result
+            }
+        }
     
     private func calculateCompletedCount(tasks: [Task]) -> Int {
         return tasks.reduce(0) { result, task in

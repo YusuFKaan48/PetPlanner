@@ -53,21 +53,25 @@ class AnimalService {
         let request = Task.fetchRequest()
         request.sortDescriptors = []
         
+        let calendar = Calendar.current
+        var startOfDay: Date
+        var endOfDay: Date
+        
         switch statType {
             case .all:
                 request.predicate = NSPredicate(format: "isDone = false")
             case .allCompleted:
                 request.predicate = NSPredicate(format: "isDone = true")
         case .today:
-            let today = Date()
-            let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
-            request.predicate = NSPredicate(format: "(taskDate >= %@) AND (taskDate < %@) AND isDone = false", today as NSDate, tomorrow! as NSDate)
-            
-                return request
+                let today = Date()
+                startOfDay = calendar.startOfDay(for: today)
+                endOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: today)!
+                request.predicate = NSPredicate(format: "(taskDate >= %@) AND (taskDate <= %@) AND isDone = false", startOfDay as NSDate, endOfDay as NSDate)
         case .todayCompleted:
                 let today = Date()
-                let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
-                request.predicate = NSPredicate(format: "(taskDate >= %@) AND (taskDate < %@) AND isDone = true", today as NSDate, tomorrow! as NSDate)
+                startOfDay = calendar.startOfDay(for: today)
+                endOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: today)!
+                request.predicate = NSPredicate(format: "(taskDate >= %@) AND (taskDate <= %@) AND isDone = true", startOfDay as NSDate, endOfDay as NSDate)
         }
         
         return request

@@ -35,7 +35,7 @@ struct TaskDetailView: View {
     var body: some View {
         HStack {
             
-            Image(systemName: checked ? "circle.inset.filled": "circle")
+            Image(systemName: checked ? "checkmark.circle": "circle")
                 .font(.title2)
                 .opacity(0.4)
                 .onTapGesture {
