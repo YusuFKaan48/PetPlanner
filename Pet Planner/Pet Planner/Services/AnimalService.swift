@@ -48,6 +48,32 @@ class AnimalService {
         try save()
     }
     
+    static func tasksByStatType(statType: TaskStatType) -> NSFetchRequest<Task> {
+        
+        let request = Task.fetchRequest()
+        request.sortDescriptors = []
+        
+        switch statType {
+            case .all:
+                request.predicate = NSPredicate(format: "isDone = false")
+            case .allCompleted:
+                request.predicate = NSPredicate(format: "isDone = true")
+        case .today:
+            let today = Date()
+            let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
+            request.predicate = NSPredicate(format: "(taskDate >= %@) AND (taskDate < %@) AND isDone = false", today as NSDate, tomorrow! as NSDate)
+            
+                return request
+        case .todayCompleted:
+                let today = Date()
+                let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
+                request.predicate = NSPredicate(format: "(taskDate >= %@) AND (taskDate < %@) AND isDone = true", today as NSDate, tomorrow! as NSDate)
+        }
+        
+        return request
+    }
+
+    
     static func getTasksByList(animal: Animals) -> NSFetchRequest<Task> {
         let request = Task.fetchRequest()
         request.sortDescriptors = []

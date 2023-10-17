@@ -8,11 +8,51 @@
 import SwiftUI
 
 struct TaskView: View {
+    
+    @FetchRequest(sortDescriptors: [])
+    private var myListResults: FetchedResults<Animals>
+    
+    private var taskStatBuilder = TaskStatsBuilder()
+    @State private var taskStatsValues = TaskStatsValues()
+    
+    @FetchRequest(fetchRequest: AnimalService.tasksByStatType(statType: .all))
+    private var allResults: FetchedResults<Task>
+    
+    @FetchRequest(fetchRequest: AnimalService.tasksByStatType(statType: .allCompleted))
+    private var allCompletedResults: FetchedResults<Task>
+    
     var body: some View {
-        Text("Task View")
+        NavigationStack {
+            VStack {
+                Text("General total.")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .padding(.horizontal, 12)
+                
+                HStack {
+                    
+                    NavigationLink {
+                        TaskListView(tasks: allCompletedResults)
+                    } label: {
+                        TaskStatView( title: "done", count: taskStatsValues.allCompletedCount)
+                    }
+                    
+                    NavigationLink {
+                        TaskListView(tasks: allResults)
+                    } label: {
+                        TaskStatView( title: "undone", count: taskStatsValues.allCount)
+                    }
+
+                }.onAppear {
+                    taskStatsValues = taskStatBuilder.build(myListResults: myListResults)
+                }
+            }
+        }
     }
 }
 
 #Preview {
     TaskView()
 }
+
