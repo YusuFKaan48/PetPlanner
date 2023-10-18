@@ -18,12 +18,11 @@ struct PetsView: View {
         NavigationStack {
             VStack {
                 Text("Pets")
-                    
                     .frame(maxWidth: .infinity, alignment: .leading)
-                
-                    .font(.system(size: 24))
+                    .font(.title2)
                     .fontWeight(.semibold)
                     .padding(.horizontal, 12)
+                
                 
                 if myAnimalResults.isEmpty {
                     Text("No pets available")

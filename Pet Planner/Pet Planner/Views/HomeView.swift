@@ -34,6 +34,7 @@ struct HomeView: View {
                     .font(.system(size: 24))
                     .fontWeight(.semibold)
                     .padding(.horizontal, 20)
+                    .padding(.vertical, 20)
                
                 if !todayResults.isEmpty {
                     Text("Today's have a task.")
@@ -90,14 +91,16 @@ struct HomeView: View {
                         TaskStatView( title: "done", count: taskStatsValues.todaysCompletedCount, icon: "checkmark.circle")
                     }
                     
+                    Spacer()
+                    
                     NavigationLink {
                         TaskListView(tasks: todayResults)
                     } label: {
                         TaskStatView( title: "undone", count: taskStatsValues.todayCount, icon: "circle")
                     }
                    
-                }.padding(.horizontal ,12)
-                .onAppear {
+                }.padding(.horizontal, 20)
+                    .onAppear {
                     taskStatsValues = taskStatBuilder.build(myListResults: myListResults)
                         
                 }

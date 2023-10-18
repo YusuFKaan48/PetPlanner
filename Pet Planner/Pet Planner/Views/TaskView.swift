@@ -30,6 +30,7 @@ struct TaskView: View {
                     .font(.system(size: 24))
                     .fontWeight(.semibold)
                     .padding(.horizontal, 20)
+                    .padding(.vertical, 20)
                 
                 
                 Text("General total.")
@@ -47,13 +48,15 @@ struct TaskView: View {
                         TaskStatView( title: "done", count: taskStatsValues.allCompletedCount, icon: "checkmark.circle")
                     }
                     
+                    Spacer()
+                    
                     NavigationLink {
                         TaskListView(tasks: allResults)
                     } label: {
                         TaskStatView( title: "undone", count: taskStatsValues.allCount, icon: "circle")
                     }
 
-                }.padding(12)
+                }.padding(.horizontal, 20)
                 .onAppear {
                     taskStatsValues = taskStatBuilder.build(myListResults: myListResults)
                 }

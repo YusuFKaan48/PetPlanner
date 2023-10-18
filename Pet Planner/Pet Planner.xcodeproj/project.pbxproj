@@ -29,6 +29,7 @@
 		D29600FB2AD412C300421CCF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600FA2AD412C300421CCF /* TaskListView.swift */; };
 		D29809FE2ADD074B00B77A49 /* TaskStatsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29809FD2ADD074B00B77A49 /* TaskStatsBuilder.swift */; };
 		D2980A002ADD0CC700B77A49 /* TaskStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29809FF2ADD0CC700B77A49 /* TaskStatView.swift */; };
+		D2980A022ADFB28300B77A49 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2980A012ADFB28300B77A49 /* NewTaskView.swift */; };
 		D2DCA4EA2ADA71E100D18F32 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA4E92ADA71E100D18F32 /* Delay.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		D29600FA2AD412C300421CCF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		D29809FD2ADD074B00B77A49 /* TaskStatsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatsBuilder.swift; sourceTree = "<group>"; };
 		D29809FF2ADD0CC700B77A49 /* TaskStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatView.swift; sourceTree = "<group>"; };
+		D2980A012ADFB28300B77A49 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
 		D2DCA4E92ADA71E100D18F32 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 				D28505A12ACFF8F6000FA305 /* AddPetView.swift */,
 				D29600F22AD3EEB500421CCF /* PetsView.swift */,
 				D29600F82AD3FF0100421CCF /* PetDetailView.swift */,
+				D2980A012ADFB28300B77A49 /* NewTaskView.swift */,
 				D29600FA2AD412C300421CCF /* TaskListView.swift */,
 				D277801F2AD54F5500BAE993 /* TaskDetailView.swift */,
 				D27780242AD679D700BAE993 /* TaskEditView.swift */,
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2980A022ADFB28300B77A49 /* NewTaskView.swift in Sources */,
 				D2980A002ADD0CC700B77A49 /* TaskStatView.swift in Sources */,
 				D23252042AD91D5E00C9530C /* SelectPetView.swift in Sources */,
 				D27780202AD54F5500BAE993 /* TaskDetailView.swift in Sources */,

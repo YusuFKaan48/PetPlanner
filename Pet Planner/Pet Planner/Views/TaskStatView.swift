@@ -47,7 +47,7 @@ struct TaskStatView: View {
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0), lineWidth: 1)
             )
-            .padding()
+            
             .foregroundColor(Color.black)
     }
 }
