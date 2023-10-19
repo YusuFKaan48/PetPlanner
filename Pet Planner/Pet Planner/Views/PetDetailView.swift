@@ -15,6 +15,12 @@ struct PetDetailView: View {
     @FetchRequest(sortDescriptors: [])
     private var taskResults: FetchedResults<Task>
     
+    @FetchRequest(fetchRequest: AnimalService.tasksByStatType(statType: .all))
+    private var allResults: FetchedResults<Task>
+    
+    @FetchRequest(fetchRequest: AnimalService.tasksByStatType(statType: .allCompleted))
+    private var allCompletedResults: FetchedResults<Task>
+    
     init(animal: Animals) {
         self.animal = animal
         _taskResults = FetchRequest(fetchRequest: AnimalService.getTasksByList(animal: animal))
@@ -28,12 +34,16 @@ struct PetDetailView: View {
                 .font(.title)
                 .padding()
             
+            
+            
             Text("\(animal.name ?? "Unknown")'s Tasks.")
                 .frame(maxWidth: .infinity, alignment: .leading)
             
                 .font(.system(size: 18))
                 .fontWeight(.medium)
                 .padding(.horizontal, 20)
+            
+            
             
             TaskListView(tasks: taskResults).padding(.trailing, 20)
             

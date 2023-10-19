@@ -72,7 +72,9 @@ struct TaskDetailView: View {
                 .onTapGesture {
                     onEvent(.onEdit)
                 }
-            
+                .onAppear {
+                    checked = task.isDone
+                }
             
         }.contentShape(Rectangle())
             .onTapGesture {

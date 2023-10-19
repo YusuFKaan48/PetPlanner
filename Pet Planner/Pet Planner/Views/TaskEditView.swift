@@ -30,8 +30,15 @@ struct TaskEditView: View {
                         Text(task.animals!.name!).fontWeight(.semibold)
                         
                         Image(systemName: "info.circle.fill").foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8))
-                    }.foregroundStyle(.black).padding(.bottom, 20)
-                }
+                    }.foregroundStyle(.black)
+                }.font(.system(size: 16))
+                    .frame( maxWidth: .infinity, minHeight: 70, maxHeight: 70)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0), lineWidth: 1)
+                    )
+                    .frame(width: 158, height: 70)
+                    .foregroundColor(Color.black).padding(.bottom, 20)
                 
                    
                         TextField("Title", text: $editConfig.title).padding(.horizontal, 20)
@@ -64,33 +71,39 @@ struct TaskEditView: View {
 
                    
                     
-                    Button("Done") {
+                    Button() {
                             do {
                               let _ = try AnimalService.updateTask(task: task, editConfig: editConfig)
                             } catch {
                                 print(error)
                             }
                         dismiss()
-                    }.disabled(!isFormValid)
-                        .font(.system(size: 16))
+                    } label: {
+                        Text("Save")
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
                             .padding(.vertical, 12)
                             .frame(maxWidth: .infinity)
                             .background(
                                 LinearGradient(gradient: Gradient(colors: [Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 1.0), Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.50)]), startPoint: .top, endPoint: .bottom)
                             )
                             .cornerRadius(12)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 20)
+                    }
+                    .padding(.horizontal, 136)
                     .padding(.top, 20)
+                    .foregroundColor(.white)
+                    .disabled(!isFormValid)
+                    
                     
                     
                     
                 }
                 
 
-            }.onAppear {
+            }.accentColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8))
+        .onAppear {
                 editConfig = TaskEditConfig(task: task)
-                }
+            }
             }
         }
 

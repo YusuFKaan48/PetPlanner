@@ -20,7 +20,10 @@ struct TaskView: View {
     
     @FetchRequest(fetchRequest: AnimalService.tasksByStatType(statType: .allCompleted))
     private var allCompletedResults: FetchedResults<Task>
+
     
+    
+   
     var body: some View {
         NavigationStack {
             VStack {
@@ -31,13 +34,15 @@ struct TaskView: View {
                     .fontWeight(.semibold)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 20)
-                
+              
                 
                 Text("General total.")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 18))
                     .fontWeight(.medium)
                     .padding(.horizontal, 20)
+                    
+                    .padding(.top, 24)
                     
                 
                 HStack {
@@ -66,6 +71,8 @@ struct TaskView: View {
                     .font(.system(size: 18))
                     .fontWeight(.medium)
                     .padding(.horizontal, 20)
+                    .padding(.bottom, -6)
+                    .padding(.top, 24)
                   
                 
                 TaskListView(tasks: allResults).padding(.trailing, 20)

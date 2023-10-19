@@ -34,7 +34,7 @@ struct HomeView: View {
                     .font(.system(size: 24))
                     .fontWeight(.semibold)
                     .padding(.horizontal, 20)
-                    .padding(.vertical, 20)
+                    
                
                 if !todayResults.isEmpty {
                     Text("Today's have a task.")
@@ -43,45 +43,51 @@ struct HomeView: View {
                         .font(.system(size: 18))
                         .fontWeight(.medium)
                         .padding(.horizontal, 20)
+                        .padding(.bottom, -6)
+                        .padding(.top, 24)
                         
                         
                   
 
                     ScrollView(.horizontal) {
-                        LazyHGrid(rows: [GridItem(.flexible())]) {
-                            ForEach(myListResults) { animal in
-                                let animalUncompletedTasks = todayResults.filter { $0.animals == animal }
-                                if !animalUncompletedTasks.isEmpty {
-                                    VStack {
-                                        Text(animal.name ?? "Unknown")
-                                            .font(.system(size: 16))
-                                            .foregroundColor(.black)
-                                            .fontWeight(.medium)
+                        HStack {
+                            LazyHGrid(rows: [GridItem(.flexible())], spacing: 10) {
+                                ForEach(myListResults) { animal in
+                                    let animalUncompletedTasks = todayResults.filter { $0.animals == animal }
+                                    if !animalUncompletedTasks.isEmpty {
+                                        VStack {
+                                            Text(animal.name ?? "Unknown")
+                                                .font(.system(size: 16))
+                                                .foregroundColor(.black)
+                                                .fontWeight(.medium)
 
-                                        Text("Have a: \(animalUncompletedTasks.count) task")
-                                            .font(.system(size: 14))
-                                            .foregroundColor(.black.opacity(0.5))
+                                            Text("Have a: \(animalUncompletedTasks.count) task")
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.black.opacity(0.5))
+                                        }
+                                        .frame(width: 158, height: 70)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0), lineWidth: 1)
+                                        )
+                                        .foregroundColor(Color.black)
                                     }
-                                    .frame(width: 158, height: 70)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0), lineWidth: 1)
-                                    )
-                                    
-                                    .foregroundColor(Color.black)
                                 }
-                            }.padding(.horizontal, 16)
+                            }
                         }
+                        .padding(.horizontal, 20)
+                       
                     }
+
                 }
 
                 
                 Text("Today's total.")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                
                     .font(.system(size: 18))
                     .fontWeight(.medium)
                     .padding(.horizontal, 20)
+                    .padding(.top, 12)
                 
                 HStack {
                     
@@ -100,6 +106,7 @@ struct HomeView: View {
                     }
                    
                 }.padding(.horizontal, 20)
+                    
                     .onAppear {
                     taskStatsValues = taskStatBuilder.build(myListResults: myListResults)
                         
@@ -107,10 +114,11 @@ struct HomeView: View {
                 
                 Text("Daily task list.")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                
                     .font(.system(size: 18))
                     .fontWeight(.medium)
                     .padding(.horizontal, 20)
+                    .padding(.bottom, -6)
+                    .padding(.top, 24)
                   
                 
                 TaskListView(tasks: todayResults).padding(.trailing, 20)

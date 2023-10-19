@@ -9,25 +9,33 @@ import SwiftUI
 
 struct ContentView: View {
 
+    let homeIcon = UIImage(named: "home-simple")
+    let taskIcon = UIImage(named: "heart")
+    let petsIcon = UIImage(named: "clipboard-check")
+
     var body: some View {
         TabView() {
             HomeView().tabItem {
-                Label("Home", systemImage: "house")
+                Image(uiImage: homeIcon!)
+                Text("Home")
             }
 
             TaskView().tabItem {
-                Label("Task", systemImage: "calendar.badge.checkmark")
+                Image(uiImage: taskIcon!)
+                Text("Task")
             }
 
             PetsView().tabItem {
-                Label("Pets", systemImage: "suit.heart")
+                Image(uiImage: petsIcon!)
+                Text("Pets")
             }
         }
         .accentColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8))
     }
 }
 
-
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }

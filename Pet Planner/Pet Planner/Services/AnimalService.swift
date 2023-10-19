@@ -84,6 +84,6 @@ class AnimalService {
         request.predicate = NSPredicate(format: "animals == %@ AND isDone == false", animal)
         return request
     }
-
+    
 }
 
