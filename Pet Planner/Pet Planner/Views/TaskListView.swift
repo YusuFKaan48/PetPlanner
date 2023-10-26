@@ -63,7 +63,6 @@ struct TaskListView: View {
          }.listStyle(PlainListStyle())
        }
    }
-
 }
 
 

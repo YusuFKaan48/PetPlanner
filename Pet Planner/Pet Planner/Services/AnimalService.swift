@@ -18,11 +18,13 @@ class AnimalService {
         try viewContext.save()
     }
     
-    static func saveAnimal(_ name: String) throws {
+    static func saveAnimal(_ name: String, picture: Data?) throws {
         let animal = Animals(context: viewContext)
         animal.name = name
+        animal.picture = picture
         try save()
     }
+
     
     static func updateTask(task: Task, editConfig: TaskEditConfig) throws -> Bool {
         
@@ -35,6 +37,12 @@ class AnimalService {
         try save()
         return true
     }
+    
+    static func deleteAnimal(_ animal: Animals) throws {
+        viewContext.delete(animal)
+        try save()
+    }
+
     
     static func deleteTask(_ task: Task) throws {
         viewContext.delete(task)

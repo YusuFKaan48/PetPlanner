@@ -20,98 +20,187 @@ struct TaskEditView: View {
     var body: some View {
         NavigationView {
             VStack {
-                
-                
                 NavigationLink {
                     SelectPetView(selectedPet: $task.animals)
                 } label: {
-                    HStack {
+                 
                         
-                        Text(task.animals!.name!).fontWeight(.semibold)
                         
-                        Image(systemName: "info.circle.fill").foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8))
-                    }.foregroundStyle(.black)
-                }.font(.system(size: 16))
-                    .frame( maxWidth: .infinity, minHeight: 70, maxHeight: 70)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0), lineWidth: 1)
-                    )
-                    .frame(width: 158, height: 70)
-                    .foregroundColor(Color.black).padding(.bottom, 20)
-                
-                   
-                        TextField("Title", text: $editConfig.title).padding(.horizontal, 20)
-                
-                Divider().padding(.horizontal, 20)
                         
-                        Toggle(isOn: $editConfig.hasDate) {
-                            Image(systemName: "calendar")
-                                .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.horizontal, 20)
-                        }.padding(.horizontal, 20).padding(.vertical, 10)
                         
-                        if editConfig.hasDate {
-                            DatePicker("Select Date", selection: $editConfig.taskDate ?? Date(), displayedComponents: .date).padding(.horizontal, 20).padding(.bottom, 10)
+                        
+                        
+                    HStack(spacing: 8) {
+                        if let imageData = task.animals?.picture {
+                            Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 48, height: 48)
+                                .cornerRadius(25)
                         }
-                
-                Divider().padding(.horizontal, 20)
                         
-                        Toggle(isOn: $editConfig.hasTime) {
-                            Image(systemName: "clock")
-                                .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.horizontal, 20)
-                        }.padding(.horizontal, 20).padding(.vertical, 10)
+                        Text(task.animals!.name!).fontWeight(.semibold).foregroundColor(Color.black)
                         
-                        if editConfig.hasTime {
-                            DatePicker("Select Time", selection: $editConfig.taskTime ?? Date(), displayedComponents: .hourAndMinute).padding(.horizontal, 20).padding(.bottom, 10)
-                        }
-                    
-                Divider().padding(.horizontal, 20)
-                    
-    
+                       
+                        Image(systemName: "info.circle.fill")
+                            .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
+                        Spacer()
+                    }.padding(.horizontal,20)
+                        .padding(.bottom, 20)
 
+                        
+                        
                    
-                    
-                    Button() {
-                            do {
-                              let _ = try AnimalService.updateTask(task: task, editConfig: editConfig)
-                            } catch {
-                                print(error)
-                            }
-                        dismiss()
-                    } label: {
-                        Text("Save")
-                            .font(.system(size: 16))
-                            .fontWeight(.semibold)
-                            .padding(.vertical, 12)
-                            .frame(maxWidth: .infinity)
-                            .background(
-                                LinearGradient(gradient: Gradient(colors: [Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 1.0), Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.50)]), startPoint: .top, endPoint: .bottom)
-                            )
-                            .cornerRadius(12)
-                    }
-                    .padding(.horizontal, 136)
-                    .padding(.top, 20)
-                    .foregroundColor(.white)
-                    .disabled(!isFormValid)
-                    
-                    
-                    
-                    
                 }
                 
-
-            }.accentColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8))
-        .onAppear {
-                editConfig = TaskEditConfig(task: task)
-            }
+                
+                
+                Text("Task Details")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 18))
+                    .fontWeight(.semibold)
+                    .padding(.horizontal, 20)
+                    
+                
+                Text("Task Name")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 14))
+                    .fontWeight(.regular)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 10)
+                
+                TextField("Title", text: $editConfig.title).padding(.horizontal, 20)
+                    .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+                        
+                        .frame( height: 50)
+                )
+                
+                .padding(20)
+                
+                
+                
+                
+                Divider().padding(20)
+                
+                
+                
+                
+                
+                Text("Task Time Details")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 18))
+                    .fontWeight(.semibold)
+                    .padding(.horizontal, 20)
+                    
+                
+                
+                
+               
+                
+                
+               
+                
+                Toggle(isOn: $editConfig.hasDate) {
+                  Text("Select Date")
+                      .frame(maxWidth: .infinity, alignment: .leading)
+                      .font(.system(size: 14))
+                      .fontWeight(.regular)
+                }.padding(.horizontal, 20).padding(.vertical, 10)
+              
+              
+              
+              
+             
+              HStack {
+                  Image(systemName: "calendar")
+                      .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.leading, 20)
+                  
+                  DatePicker("", selection: $editConfig.taskDate ?? Date(), displayedComponents: .date).padding(.trailing, 20).padding(.vertical, 10)
+                      .foregroundColor(.gray)
+                      .font(.system(size: 12))
+                      .disabled(!editConfig.hasDate)
+                      
+              }
+              .background(
+                  RoundedRectangle(cornerRadius: 8)
+                      .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+              )
+              .padding(.horizontal, 20)
+          
+              
+             
+                
+                
+                
+                
+                
+                
+            
+                
+            
+                  Toggle(isOn: $editConfig.hasTime) {
+                    Text("Select Time")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 14))
+                        .fontWeight(.regular)
+                  }.padding(.horizontal, 20).padding(.vertical, 10)
+                
+                
+                
+                
+            
+                HStack {
+                    Image(systemName: "clock")
+                        .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.leading, 20)
+                    
+                    DatePicker("", selection: $editConfig.taskTime ?? Date(), displayedComponents: .hourAndMinute).padding(.trailing, 20).padding(.vertical, 10)
+                        .foregroundColor(.gray)
+                        .font(.system(size: 12))
+                        .disabled(!editConfig.hasTime)
+                        
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+                )
+                .padding(.horizontal, 20)
+            
+                
+               
+                
+                
+                
+                
+                
+                Button() {
+                    do {
+                        let _ = try AnimalService.updateTask(task: task, editConfig: editConfig)
+                    } catch {
+                        print(error)
+                    }
+                    dismiss()
+                } label: {
+                    Text("Save")
+                        .font(.system(size: 16))
+                        .fontWeight(.semibold)
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            LinearGradient(gradient: Gradient(colors: [Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 1.0), Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.50)]), startPoint: .top, endPoint: .bottom)
+                        )
+                        .cornerRadius(8)
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 20)
+                .foregroundColor(.white)
+                .disabled(!isFormValid)
             }
         }
-
-
-
-struct TaskEditView_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskEditView(task: .constant(PreviewData.tasks))
+        .accentColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
+        .onAppear {
+            editConfig = TaskEditConfig(task: task)
+        }
     }
 }
-

@@ -21,14 +21,27 @@ struct PetDetailView: View {
     @FetchRequest(fetchRequest: AnimalService.tasksByStatType(statType: .allCompleted))
     private var allCompletedResults: FetchedResults<Task>
     
+    @Environment(\.dismiss) private var dismiss
+    
+    @State private var isConfirmingDelete: Bool = false
+  
+    
     init(animal: Animals) {
         self.animal = animal
         _taskResults = FetchRequest(fetchRequest: AnimalService.getTasksByList(animal: animal))
     }
     
-    
     var body: some View {
         VStack {
+            
+            if let imageData = animal.picture {
+                Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 96, height: 96)
+                    .cornerRadius(125)
+            } else {
+        }
             Text("\(animal.name ?? "Unknown")")
                 .fontWeight(.semibold)
                 .font(.title)
@@ -36,16 +49,42 @@ struct PetDetailView: View {
             
             
             
-            Text("\(animal.name ?? "Unknown")'s Tasks.")
-                .frame(maxWidth: .infinity, alignment: .leading)
             
+            
+            
+            if !taskResults.isEmpty {
+                Text("\(animal.name ?? "Unknown")'s Tasks.")
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.system(size: 18))
                 .fontWeight(.medium)
                 .padding(.horizontal, 20)
+                .padding(.bottom, -6)
+                .padding(.top, 24)
+              
+                TaskListView(tasks: taskResults).padding(.trailing, 20)
+           
+            }  else {
+                Text("\(animal.name ?? "Unknown")'s Tasks.")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 18))
+                    .fontWeight(.medium)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, -6)
+                    .padding(.top, 24)
+                
+                
+                Text("\(animal.name ?? "Unknown")'s has no tasks.")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .font(.system(size: 12))
+                    .fontWeight(.medium)
+                    .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
+                    .padding(.top, 12)
+                
+                Spacer()
+            }
             
+        
             
-            
-            TaskListView(tasks: taskResults).padding(.trailing, 20)
             
             HStack {
                 Button("+ New Task") {
@@ -55,11 +94,11 @@ struct PetDetailView: View {
                 .padding(.vertical, 12)
                 .frame(maxWidth: .infinity)
                 .background(
-                    LinearGradient(gradient: Gradient(colors: [Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 1.0), Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.50)]), startPoint: .top, endPoint: .bottom)
-                )
-                .cornerRadius(12)
+                    LinearGradient(gradient: Gradient(colors: [Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 1.0), Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                .cornerRadius(8)
         .foregroundColor(.white)
         .padding(.horizontal, 20)
+        .padding(.bottom, 20)
     }.sheet(isPresented: $isPresented) {
         NavigationView {
             NewTaskView { title in
@@ -71,8 +110,31 @@ struct PetDetailView: View {
             }
         }
     }
-    }
+        
+        
+        Button("Delete Animal") {
+                            isConfirmingDelete = true
+             }.padding(.bottom,20)
+            .foregroundStyle(.red)
+                        .alert(isPresented: $isConfirmingDelete) {
+                            Alert(
+                                title: Text("Are you sure?"),
+                                message: Text("This action cannot be reversed"),
+                                primaryButton: .destructive(Text("Delete")) {
+                                    do {
+                                        try AnimalService.deleteAnimal(animal)
+                                        dismiss()
+                                    } catch {
+                                        print(error.localizedDescription)
+                                    }
+                                },
+                                secondaryButton: .cancel()
+                            )
+                        }
+                    }
 }
+
+
 
 #Preview {
     PetDetailView(animal: PreviewData.animals)

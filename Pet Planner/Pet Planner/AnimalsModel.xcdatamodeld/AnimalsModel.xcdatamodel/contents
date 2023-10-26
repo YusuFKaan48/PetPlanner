@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23B5056e" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="Animals" representedClassName="Animals" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="animals" inverseEntity="Task"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">

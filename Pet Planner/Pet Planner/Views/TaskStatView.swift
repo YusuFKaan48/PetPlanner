@@ -20,7 +20,7 @@ struct TaskStatView: View {
                     Image(systemName: icon)
                         .font(.title)
                         .fontWeight(.regular)
-                        .foregroundColor(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0))
+                        .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
                         .padding(.leading, 16)
                     
                     if let count {
@@ -38,16 +38,13 @@ struct TaskStatView: View {
                         .foregroundColor(.black)
                 }
                 Spacer()
-                
-               
             }
-            .frame(width: 158, height: 70) 
+            .frame(width: 166, height: 70) 
 
             .background(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0), lineWidth: 1)
             )
-            
             .foregroundColor(Color.black)
     }
 }

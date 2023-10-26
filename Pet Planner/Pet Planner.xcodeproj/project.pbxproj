@@ -22,14 +22,14 @@
 		D28505A82AD002BD000FA305 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28505A72AD002BD000FA305 /* CoreDataProvider.swift */; };
 		D28505B12AD006E4000FA305 /* AnimalsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D28505AF2AD006E4000FA305 /* AnimalsModel.xcdatamodeld */; };
 		D28505B42AD01EC2000FA305 /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28505B32AD01EC2000FA305 /* AnimalService.swift */; };
-		D29600F32AD3EEB500421CCF /* PetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F22AD3EEB500421CCF /* PetsView.swift */; };
 		D29600F52AD3EF2000421CCF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F42AD3EF2000421CCF /* HomeView.swift */; };
-		D29600F72AD3F1C900421CCF /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F62AD3F1C900421CCF /* TaskView.swift */; };
+		D29600F72AD3F1C900421CCF /* PetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F62AD3F1C900421CCF /* PetsView.swift */; };
 		D29600F92AD3FF0100421CCF /* PetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600F82AD3FF0100421CCF /* PetDetailView.swift */; };
 		D29600FB2AD412C300421CCF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29600FA2AD412C300421CCF /* TaskListView.swift */; };
 		D29809FE2ADD074B00B77A49 /* TaskStatsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29809FD2ADD074B00B77A49 /* TaskStatsBuilder.swift */; };
 		D2980A002ADD0CC700B77A49 /* TaskStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29809FF2ADD0CC700B77A49 /* TaskStatView.swift */; };
 		D2980A022ADFB28300B77A49 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2980A012ADFB28300B77A49 /* NewTaskView.swift */; };
+		D2980A062AE146C100B77A49 /* İmagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2980A052AE146C100B77A49 /* İmagePicker.swift */; };
 		D2DCA4EA2ADA71E100D18F32 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA4E92ADA71E100D18F32 /* Delay.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,14 +50,14 @@
 		D28505A72AD002BD000FA305 /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		D28505B02AD006E4000FA305 /* AnimalsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimalsModel.xcdatamodel; sourceTree = "<group>"; };
 		D28505B32AD01EC2000FA305 /* AnimalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalService.swift; sourceTree = "<group>"; };
-		D29600F22AD3EEB500421CCF /* PetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsView.swift; sourceTree = "<group>"; };
 		D29600F42AD3EF2000421CCF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		D29600F62AD3F1C900421CCF /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		D29600F62AD3F1C900421CCF /* PetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsView.swift; sourceTree = "<group>"; };
 		D29600F82AD3FF0100421CCF /* PetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailView.swift; sourceTree = "<group>"; };
 		D29600FA2AD412C300421CCF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		D29809FD2ADD074B00B77A49 /* TaskStatsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatsBuilder.swift; sourceTree = "<group>"; };
 		D29809FF2ADD0CC700B77A49 /* TaskStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatView.swift; sourceTree = "<group>"; };
 		D2980A012ADFB28300B77A49 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
+		D2980A052AE146C100B77A49 /* İmagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "İmagePicker.swift"; sourceTree = "<group>"; };
 		D2DCA4E92ADA71E100D18F32 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				D277801D2AD54EBD00BAE993 /* Date+Extensions.swift */,
+				D2980A052AE146C100B77A49 /* İmagePicker.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -145,9 +146,8 @@
 			children = (
 				D28505812ACFE474000FA305 /* ContentView.swift */,
 				D29600F42AD3EF2000421CCF /* HomeView.swift */,
-				D29600F62AD3F1C900421CCF /* TaskView.swift */,
+				D29600F62AD3F1C900421CCF /* PetsView.swift */,
 				D28505A12ACFF8F6000FA305 /* AddPetView.swift */,
-				D29600F22AD3EEB500421CCF /* PetsView.swift */,
 				D29600F82AD3FF0100421CCF /* PetDetailView.swift */,
 				D2980A012ADFB28300B77A49 /* NewTaskView.swift */,
 				D29600FA2AD412C300421CCF /* TaskListView.swift */,
@@ -250,7 +250,7 @@
 				D23252042AD91D5E00C9530C /* SelectPetView.swift in Sources */,
 				D27780202AD54F5500BAE993 /* TaskDetailView.swift in Sources */,
 				D27780252AD679D700BAE993 /* TaskEditView.swift in Sources */,
-				D29600F72AD3F1C900421CCF /* TaskView.swift in Sources */,
+				D29600F72AD3F1C900421CCF /* PetsView.swift in Sources */,
 				D29600F92AD3FF0100421CCF /* PetDetailView.swift in Sources */,
 				D28505B12AD006E4000FA305 /* AnimalsModel.xcdatamodeld in Sources */,
 				D29809FE2ADD074B00B77A49 /* TaskStatsBuilder.swift in Sources */,
@@ -264,8 +264,8 @@
 				D28505B42AD01EC2000FA305 /* AnimalService.swift in Sources */,
 				D23252022AD7D08000C9530C /* Pet_PlannerApp.swift in Sources */,
 				D27780192AD54B6500BAE993 /* PreviewData.swift in Sources */,
+				D2980A062AE146C100B77A49 /* İmagePicker.swift in Sources */,
 				D29600F52AD3EF2000421CCF /* HomeView.swift in Sources */,
-				D29600F32AD3EEB500421CCF /* PetsView.swift in Sources */,
 				D28505A82AD002BD000FA305 /* CoreDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +400,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pet Planner/Preview Content\"";
+				DEVELOPMENT_TEAM = QHNUG992DU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -428,6 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pet Planner/Preview Content\"";
+				DEVELOPMENT_TEAM = QHNUG992DU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -34,11 +34,10 @@ struct TaskDetailView: View {
     
     var body: some View {
         HStack {
-            
             Image(systemName: checked ? "checkmark.circle": "circle")
                 .font(.title)
                 .fontWeight(.regular)
-                .foregroundColor(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0))
+                .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
                 
                 .onTapGesture {
                     checked.toggle()
@@ -67,7 +66,7 @@ struct TaskDetailView: View {
                 .opacity(0.4)
             }
             Spacer()
-            Image(systemName: "info.circle.fill").foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8))
+            Image(systemName: "info.circle.fill").foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
                 .opacity(isSelected ? 1.0: 0.0)
                 .onTapGesture {
                     onEvent(.onEdit)
