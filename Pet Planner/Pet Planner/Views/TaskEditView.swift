@@ -79,6 +79,23 @@ struct TaskEditView: View {
                 
                 .padding(20)
                 
+                Text("Task Notes")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 14))
+                    .fontWeight(.regular)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 10)
+                
+                TextField("Title", text: $editConfig.notes ?? "").padding(.horizontal, 20)
+                    .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+                        
+                        .frame( height: 50)
+                )
+                
+                .padding(20)
+                
                 
                 
                 

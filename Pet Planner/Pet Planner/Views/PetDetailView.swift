@@ -25,6 +25,9 @@ struct PetDetailView: View {
     
     @State private var isConfirmingDelete: Bool = false
     
+    @State private var editConfig = TaskEditConfig()
+
+    
     
     @State private var isEditViewPresented: Bool = false
     @State private var editAnimal: Animals = Animals()
@@ -115,9 +118,9 @@ struct PetDetailView: View {
                 .padding(.bottom, 20)
         }.sheet(isPresented: $isPresented) {
             NavigationView {
-                NewTaskView { title, date, time in
+                NewTaskView { title, date, time, notes in
                     do {
-                        try AnimalService.saveTaskToMyAnimal(animal: animal, taskTitle: title, taskDate: date, taskTime: time)
+                        try AnimalService.saveTaskToMyAnimal(animal: animal, taskNotes: notes, taskTitle: title, taskDate: date, taskTime: time)
                     } catch {
                         print(error.localizedDescription)
                     }

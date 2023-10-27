@@ -35,6 +35,12 @@ struct AnimalEditView: View {
                     .padding(.horizontal, 20)
                 
                 
+                Text("Animals picture")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 14))
+                    .fontWeight(.regular)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 10)
           
                
                 ZStack {

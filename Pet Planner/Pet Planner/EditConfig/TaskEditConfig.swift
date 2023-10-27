@@ -10,6 +10,7 @@ import Foundation
 struct TaskEditConfig {
     var title: String = ""
     var isDone: Bool = false
+    var notes: String?
     var hasDate: Bool = false
     var hasTime: Bool = false
     var taskDate: Date?
@@ -20,6 +21,7 @@ struct TaskEditConfig {
     init(task: Task) {
         title = task.title ?? ""
         isDone = task.isDone
+        notes = task.notes ?? ""
         taskDate = task.taskDate ?? Date()
         taskTime = task.taskTime ?? Date()
         hasDate = task.taskDate != nil

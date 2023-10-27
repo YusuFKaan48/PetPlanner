@@ -33,19 +33,6 @@ class AnimalService {
         try save()
         return true
     }
-
-    
-    static func updateTask(task: Task, editConfig: TaskEditConfig) throws -> Bool {
-        
-        let taskToUpdate = task
-        taskToUpdate.isDone = editConfig.isDone
-        taskToUpdate.title = editConfig.title
-        taskToUpdate.taskDate = editConfig.hasDate ? editConfig.taskDate: nil
-        taskToUpdate.taskTime = editConfig.hasTime ? editConfig.taskTime: nil
-        
-        try save()
-        return true
-    }
     
     static func deleteAnimal(_ animal: Animals) throws {
         viewContext.delete(animal)
@@ -58,14 +45,29 @@ class AnimalService {
         try save()
     }
     
-    static func saveTaskToMyAnimal(animal: Animals, taskTitle: String, taskDate: Date?, taskTime: Date?) throws {
-        let task = Task(context: viewContext)
-        task.title = taskTitle
-        task.taskDate = taskDate
-        task.taskTime = taskTime
-        animal.addToTasks(task)
+    static func updateTask(task: Task, editConfig: TaskEditConfig) throws -> Bool {
+        
+        let taskToUpdate = task
+        taskToUpdate.isDone = editConfig.isDone
+        taskToUpdate.title = editConfig.title
+        taskToUpdate.notes = editConfig.notes
+        taskToUpdate.taskDate = editConfig.hasDate ? editConfig.taskDate: nil
+        taskToUpdate.taskTime = editConfig.hasTime ? editConfig.taskTime: nil
+        
         try save()
+        return true
     }
+    
+    static func saveTaskToMyAnimal(animal: Animals, taskNotes: String? ,taskTitle: String, taskDate: Date?, taskTime: Date?) throws {
+           let task = Task(context: viewContext)
+           task.title = taskTitle
+           task.notes = taskNotes
+           task.taskDate = taskDate
+           task.taskTime = taskTime
+           animal.addToTasks(task)
+           try save()
+       }
+
 
     
     static func tasksByStatType(statType: TaskStatType) -> NSFetchRequest<Task> {

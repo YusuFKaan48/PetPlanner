@@ -11,11 +11,13 @@ struct NewTaskView: View {
     
     @State private var title: String = ""
     @State private var date: Date? = nil
+    @State private var notes: String = ""
     @State private var time: Date? = nil
     @State private var isDateEnabled: Bool = false
     @State private var isTimeEnabled: Bool = false
+ 
     
-    let onSave: (String, Date?, Date?) -> Void
+    let onSave: (String, Date?, Date?, String?) -> Void
     
     @Environment(\.dismiss) private var dismiss
     
@@ -47,6 +49,21 @@ struct NewTaskView: View {
                     .frame( height: 50)
             )
             
+            Text("Task Notes")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(size: 14))
+                .fontWeight(.regular)
+                .padding(.horizontal, 20)
+                .padding(.top, 10)
+            
+            TextField("New Task...", text: $notes).padding(.horizontal, 20)
+                .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+                    
+                    .frame( height: 50)
+            )
+            
             .padding(20)
             
             
@@ -67,7 +84,14 @@ struct NewTaskView: View {
             
             
             
+      
+          
             
+            
+            
+            
+            
+      
             Toggle(isOn: $isDateEnabled) {
               Text("Select Date")
                   .frame(maxWidth: .infinity, alignment: .leading)
@@ -96,7 +120,6 @@ struct NewTaskView: View {
           .padding(.horizontal, 20)
       
           
-         
             
             
             
@@ -149,7 +172,7 @@ struct NewTaskView: View {
         
             
             Button {
-                onSave(title, date, time)
+                onSave(title, isDateEnabled ? date : nil, isTimeEnabled ? time : nil, notes)
                     dismiss()
             } label: {
                 Text("Save")
@@ -172,5 +195,5 @@ struct NewTaskView: View {
 }
 
 #Preview {
-    NewTaskView(onSave: { (_,_,_) in })
+    NewTaskView(onSave: { (_,_,_,_) in })
 }
