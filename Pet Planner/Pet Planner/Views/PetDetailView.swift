@@ -24,10 +24,17 @@ struct PetDetailView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var isConfirmingDelete: Bool = false
-  
+    
+    
+    @State private var isEditViewPresented: Bool = false
+    @State private var editAnimal: Animals = Animals()
+    
+    
+    
     
     init(animal: Animals) {
         self.animal = animal
+        self.editAnimal = animal
         _taskResults = FetchRequest(fetchRequest: AnimalService.getTasksByList(animal: animal))
     }
     
@@ -41,7 +48,7 @@ struct PetDetailView: View {
                     .frame(width: 96, height: 96)
                     .cornerRadius(125)
             } else {
-        }
+            }
             Text("\(animal.name ?? "Unknown")")
                 .fontWeight(.semibold)
                 .font(.title)
@@ -54,15 +61,15 @@ struct PetDetailView: View {
             
             if !taskResults.isEmpty {
                 Text("\(animal.name ?? "Unknown")'s Tasks.")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.system(size: 18))
-                .fontWeight(.medium)
-                .padding(.horizontal, 20)
-                .padding(.bottom, -6)
-                .padding(.top, 24)
-              
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 18))
+                    .fontWeight(.medium)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, -6)
+                    .padding(.top, 24)
+                
                 TaskListView(tasks: taskResults).padding(.trailing, 20)
-           
+                
             }  else {
                 Text("\(animal.name ?? "Unknown")'s Tasks.")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -83,7 +90,14 @@ struct PetDetailView: View {
                 Spacer()
             }
             
-        
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             HStack {
@@ -96,42 +110,61 @@ struct PetDetailView: View {
                 .background(
                     LinearGradient(gradient: Gradient(colors: [Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 1.0), Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
                 .cornerRadius(8)
-        .foregroundColor(.white)
-        .padding(.horizontal, 20)
-        .padding(.bottom, 20)
-    }.sheet(isPresented: $isPresented) {
-        NavigationView {
-            NewTaskView { title in
-                        do {
-                            try AnimalService.saveTaskToMyAnimal(animal: animal, taskTitle: title)
-                        } catch {
-                    print(error.localizedDescription)
+                .foregroundColor(.white)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
+        }.sheet(isPresented: $isPresented) {
+            NavigationView {
+                NewTaskView { title, date, time in
+                    do {
+                        try AnimalService.saveTaskToMyAnimal(animal: animal, taskTitle: title, taskDate: date, taskTime: time)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                 }
             }
         }
-    }
+        
+        
+        
         
         
         Button("Delete Animal") {
-                            isConfirmingDelete = true
-             }.padding(.bottom,20)
+            isConfirmingDelete = true
+        }.padding(.bottom,20)
             .foregroundStyle(.red)
-                        .alert(isPresented: $isConfirmingDelete) {
-                            Alert(
-                                title: Text("Are you sure?"),
-                                message: Text("This action cannot be reversed"),
-                                primaryButton: .destructive(Text("Delete")) {
-                                    do {
-                                        try AnimalService.deleteAnimal(animal)
-                                        dismiss()
-                                    } catch {
-                                        print(error.localizedDescription)
-                                    }
-                                },
-                                secondaryButton: .cancel()
-                            )
+            .alert(isPresented: $isConfirmingDelete) {
+                Alert(
+                    title: Text("Are you sure?"),
+                    message: Text("This action cannot be reversed"),
+                    primaryButton: .destructive(Text("Delete")) {
+                        do {
+                            try AnimalService.deleteAnimal(animal)
+                            dismiss()
+                        } catch {
+                            print(error.localizedDescription)
                         }
-                    }
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+        
+        
+        Button("Edit Animal") {
+            isEditViewPresented = true
+            editAnimal = animal
+        }
+        
+        .sheet(isPresented: $isEditViewPresented) {
+            NavigationView {
+                AnimalEditView(animals: $editAnimal, animal: editAnimal)
+            }
+            
+            
+            
+            
+        }
+    }
 }
 
 

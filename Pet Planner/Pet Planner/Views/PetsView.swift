@@ -101,7 +101,7 @@ struct PetsView: View {
                 
                 HStack {
                     NavigationLink {
-                        TaskListView(tasks: allCompletedResults)
+                        TaskListView(tasks: allCompletedResults).padding(.trailing, 20)
                     } label: {
                         TaskStatView( title: "done", count: taskStatsValues.allCompletedCount, icon: "checkmark.circle")
                     }
@@ -109,7 +109,7 @@ struct PetsView: View {
                     Spacer()
                     
                     NavigationLink {
-                        TaskListView(tasks: allResults)
+                        TaskListView(tasks: allResults).padding(.trailing, 20)
                     } label: {
                         TaskStatView( title: "undone", count: taskStatsValues.allCount, icon: "circle")
                     }
@@ -130,6 +130,7 @@ struct PetsView: View {
                     .padding(.top, 24)
                   
                 TaskListView(tasks: allResults).padding(.trailing, 20)
+                
             } else {
                 Text("Task list.")
                     .frame(maxWidth: .infinity, alignment: .leading)

@@ -10,8 +10,12 @@ import SwiftUI
 struct NewTaskView: View {
     
     @State private var title: String = ""
+    @State private var date: Date? = nil
+    @State private var time: Date? = nil
+    @State private var isDateEnabled: Bool = false
+    @State private var isTimeEnabled: Bool = false
     
-    let onSave: (String) -> Void
+    let onSave: (String, Date?, Date?) -> Void
     
     @Environment(\.dismiss) private var dismiss
     
@@ -21,17 +25,131 @@ struct NewTaskView: View {
     
     var body: some View {
         VStack {
-            Text("Add new task.")
-                .fontWeight(.bold)
+            Text("Task Details")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(size: 18))
+                .fontWeight(.semibold)
+                .padding(.horizontal, 20)
+                
             
-            TextField("New task", text: $title)
-                .padding(.horizontal, 40)
-                .background(RoundedRectangle(cornerRadius: 8).fill(Color.white))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .textInputAutocapitalization(.none)
+            Text("Task Name")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(size: 14))
+                .fontWeight(.regular)
+                .padding(.horizontal, 20)
+                .padding(.top, 10)
+            
+            TextField("New Task...", text: $title).padding(.horizontal, 20)
+                .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+                    
+                    .frame( height: 50)
+            )
+            
+            .padding(20)
+            
+            
+            
+            
+            Divider().padding(20)
+            
+            
+            
+            
+            Text("Task Time Details")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(size: 18))
+                .fontWeight(.semibold)
+                .padding(.horizontal, 20)
+                
+            
+            
+            
+            
+            
+            Toggle(isOn: $isDateEnabled) {
+              Text("Select Date")
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                  .font(.system(size: 14))
+                  .fontWeight(.regular)
+            }.padding(.horizontal, 20).padding(.vertical, 10)
+          
+          
+          
+          
+         
+          HStack {
+              Image(systemName: "calendar")
+                  .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.leading, 20)
+              
+              DatePicker("", selection: $date ?? Date(), displayedComponents: .date).padding(.trailing, 20).padding(.vertical, 10)
+                  .foregroundColor(.gray)
+                  .font(.system(size: 12))
+                  .disabled(!isDateEnabled)
+                  
+          }
+          .background(
+              RoundedRectangle(cornerRadius: 8)
+                  .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+          )
+          .padding(.horizontal, 20)
+      
+          
+         
+            
+            
+            
+            
+            
+            
+        
+            
+        
+              Toggle(isOn: $isTimeEnabled) {
+                Text("Select Time")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 14))
+                    .fontWeight(.regular)
+              }.padding(.horizontal, 20).padding(.vertical, 10)
+            
+            
+            
+            
+        
+            HStack {
+                Image(systemName: "clock")
+                    .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.leading, 20)
+                
+                DatePicker("", selection: $time ?? Date(), displayedComponents: .hourAndMinute).padding(.trailing, 20).padding(.vertical, 10)
+                    .foregroundColor(.gray)
+                    .font(.system(size: 12))
+                    .disabled(!isTimeEnabled)
+                    
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+            )
+            .padding(.horizontal, 20)
+        
+            
+           
+            
+            
+            
+            
+            
+            
+            
+            
+            
+           
+            
+        
             
             Button {
-                    onSave(title)
+                onSave(title, date, time)
                     dismiss()
             } label: {
                 Text("Save")
@@ -42,17 +160,17 @@ struct NewTaskView: View {
                     .background(
                         LinearGradient(gradient: Gradient(colors: [Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 1.0), Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.50)]), startPoint: .top, endPoint: .bottom)
                     )
-                    .cornerRadius(12)
+                    .cornerRadius(8)
             }
-            .padding(.horizontal, 120)
+            .padding(.horizontal, 20)
             .padding(.top, 20)
             .foregroundColor(.white)
             .disabled(!isFormValid)
         }
-        .padding()
+        
     }
 }
 
 #Preview {
-    NewTaskView(onSave: { (_) in })
+    NewTaskView(onSave: { (_,_,_) in })
 }

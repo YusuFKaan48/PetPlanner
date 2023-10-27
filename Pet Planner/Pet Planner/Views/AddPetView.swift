@@ -30,13 +30,15 @@ struct AddPetView: View {
                         .cornerRadius(60)
                 } else {
                     Circle()
-                        .stroke(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0), lineWidth: 1)
+                        .foregroundStyle(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
                         .frame(width: 120, height: 120)
                         .foregroundColor(.white)
                         .overlay(
                             Image(systemName: "plus")
                                 .font(.system(size: 48))
                                 .foregroundColor(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0))
+                            
+                            
                         )
                         .onTapGesture {
                             isImagePickerPresented = true
@@ -54,17 +56,24 @@ struct AddPetView: View {
             }
 
             Text("What's your pet's name?")
-                .fontWeight(.bold)
+                .fontWeight(.medium)
+                .padding(.bottom, 10)
 
-            Text("Please enter your pet's name.")
-                .foregroundColor(.gray)
 
-            TextField("Pet's Name", text: $name)
-                .padding(.horizontal, 40)
-                .background(RoundedRectangle(cornerRadius: 8).fill(Color.white))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .textInputAutocapitalization(.none)
-
+            
+            
+            
+            TextField("Pet's name", text: $name).padding(.horizontal, 20)
+                .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+                    
+                    .frame( height: 50)
+            )
+            
+            .padding(20)
+            .padding(.bottom, 20)
+            
             Button {
                 onSave(name, selectedImage)
                 dismiss()
@@ -79,8 +88,8 @@ struct AddPetView: View {
                     )
                     .cornerRadius(8)
             }
-            .padding(.horizontal, 120)
-            .padding(.top, 20)
+            .padding(.horizontal, 20)
+            .padding(.bottom, 20)
             .foregroundColor(.white)
             .disabled(!isFormValid)
         }
@@ -89,6 +98,6 @@ struct AddPetView: View {
                 isImagePickerPresented = false
             }
         }
-        .padding()
+        
     }
 }

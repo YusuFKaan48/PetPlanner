@@ -86,8 +86,9 @@ struct HomeView: View {
                                 }
                             }
                         }.padding(.leading, 1)
+                            
                     }
-                }.padding(.horizontal, 20)
+                }.padding(.leading, 20)
                 }  else {
                     
                     Text("Today's have a task.")
@@ -118,7 +119,7 @@ struct HomeView: View {
                 
                 HStack {
                     NavigationLink {
-                        TaskListView(tasks: todayCompletedResults)
+                        TaskListView(tasks: todayCompletedResults).padding(.trailing, 20)
                     } label: {
                         TaskStatView( title: "done", count: taskStatsValues.todaysCompletedCount, icon: "checkmark.circle")
                     }
@@ -126,7 +127,7 @@ struct HomeView: View {
                     Spacer()
                     
                     NavigationLink {
-                        TaskListView(tasks: todayResults)
+                        TaskListView(tasks: todayResults).padding(.trailing, 20)
                     } label: {
                         TaskStatView( title: "undone", count: taskStatsValues.todayCount, icon: "circle")
                     }

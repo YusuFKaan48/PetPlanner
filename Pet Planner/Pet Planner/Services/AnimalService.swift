@@ -24,6 +24,15 @@ class AnimalService {
         animal.picture = picture
         try save()
     }
+    
+    static func updateAnimal(animals: Animals, editConfig: AnimalEditConfig) throws -> Bool {
+        
+        animals.name = editConfig.name
+        animals.picture = editConfig.picture
+
+        try save()
+        return true
+    }
 
     
     static func updateTask(task: Task, editConfig: TaskEditConfig) throws -> Bool {
@@ -49,12 +58,15 @@ class AnimalService {
         try save()
     }
     
-    static func saveTaskToMyAnimal(animal: Animals, taskTitle: String) throws {
+    static func saveTaskToMyAnimal(animal: Animals, taskTitle: String, taskDate: Date?, taskTime: Date?) throws {
         let task = Task(context: viewContext)
         task.title = taskTitle
+        task.taskDate = taskDate
+        task.taskTime = taskTime
         animal.addToTasks(task)
         try save()
     }
+
     
     static func tasksByStatType(statType: TaskStatType) -> NSFetchRequest<Task> {
         
