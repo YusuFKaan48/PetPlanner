@@ -10,9 +10,9 @@ import SwiftUI
 struct NewTaskView: View {
     
     @State private var title: String = ""
-    @State private var date: Date? = nil
+    @State private var date: Date = Date()
     @State private var notes: String = ""
-    @State private var time: Date? = nil
+    @State private var time: Date = Date()
     @State private var isDateEnabled: Bool = false
     @State private var isTimeEnabled: Bool = false
  
@@ -47,7 +47,8 @@ struct NewTaskView: View {
                     .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
                     
                     .frame( height: 50)
-            )
+            ).padding(.horizontal, 20)
+                .padding(.vertical, 10)
             
             Text("Task Notes")
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -56,16 +57,15 @@ struct NewTaskView: View {
                 .padding(.horizontal, 20)
                 .padding(.top, 10)
             
-            TextField("New Task...", text: $notes).padding(.horizontal, 20)
+            TextField("Add note...", text: $notes).padding(.horizontal, 20)
                 .background(
                 RoundedRectangle(cornerRadius: 8)
                     .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
                     
                     .frame( height: 50)
-            )
-            
-            .padding(20)
-            
+            ).padding(.horizontal, 20)
+                .padding(.vertical, 10)
+           
             
             
             
@@ -107,7 +107,7 @@ struct NewTaskView: View {
               Image(systemName: "calendar")
                   .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.leading, 20)
               
-              DatePicker("", selection: $date ?? Date(), displayedComponents: .date).padding(.trailing, 20).padding(.vertical, 10)
+              DatePicker("", selection: $date, displayedComponents: .date).padding(.trailing, 20).padding(.vertical, 10)
                   .foregroundColor(.gray)
                   .font(.system(size: 12))
                   .disabled(!isDateEnabled)
@@ -144,7 +144,7 @@ struct NewTaskView: View {
                 Image(systemName: "clock")
                     .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.leading, 20)
                 
-                DatePicker("", selection: $time ?? Date(), displayedComponents: .hourAndMinute).padding(.trailing, 20).padding(.vertical, 10)
+                DatePicker("", selection: $time, displayedComponents: .hourAndMinute).padding(.trailing, 20).padding(.vertical, 10)
                     .foregroundColor(.gray)
                     .font(.system(size: 12))
                     .disabled(!isTimeEnabled)

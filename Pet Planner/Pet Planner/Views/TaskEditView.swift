@@ -69,7 +69,7 @@ struct TaskEditView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 10)
                 
-                TextField("Title", text: $editConfig.title).padding(.horizontal, 20)
+                TextField("New task...", text: $editConfig.title).padding(.horizontal, 20)
                     .background(
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
@@ -86,7 +86,7 @@ struct TaskEditView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 10)
                 
-                TextField("Title", text: $editConfig.notes ?? "").padding(.horizontal, 20)
+                TextField("Add notes...", text: $editConfig.notes ?? "").padding(.horizontal, 20)
                     .background(
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))

@@ -43,19 +43,71 @@ struct PetDetailView: View {
     
     var body: some View {
         VStack {
-            
+            HStack{
             if let imageData = animal.picture {
                 Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 96, height: 96)
+                    .frame(width: 76, height: 76)
                     .cornerRadius(125)
             } else {
             }
+            
+            
+          
             Text("\(animal.name ?? "Unknown")")
                 .fontWeight(.semibold)
                 .font(.title)
-                .padding()
+                .padding(.leading, 8)
+                
+            
+                Button {
+                    isEditViewPresented = true
+                    editAnimal = animal
+                } label: {
+                    Image(systemName: "pencil.circle.fill")
+                }
+               
+                .sheet(isPresented: $isEditViewPresented) {
+                    NavigationView {
+                        AnimalEditView(animals: $editAnimal, animal: editAnimal)
+                    }
+                }
+                
+                
+                
+                Spacer ()
+                
+                
+                Button {
+                    isConfirmingDelete = true
+                } label: {
+                    Image(systemName: "trash")
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .alert(isPresented: $isConfirmingDelete) {
+                    Alert(
+                        title: Text("Are you sure?"),
+                        message: Text("This action cannot be reversed"),
+                        primaryButton: .destructive(Text("Delete")) {
+                            do {
+                                try AnimalService.deleteAnimal(animal)
+                                dismiss()
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
+                
+                
+
+                
+                
+                
+
+            }.padding(.horizontal, 20)
             
             
             
@@ -69,7 +121,7 @@ struct PetDetailView: View {
                     .fontWeight(.medium)
                     .padding(.horizontal, 20)
                     .padding(.bottom, -6)
-                    .padding(.top, 24)
+                    .padding(.top, 16)
                 
                 TaskListView(tasks: taskResults).padding(.trailing, 20)
                 
@@ -129,44 +181,8 @@ struct PetDetailView: View {
         }
         
         
-        
-        
-        
-        Button("Delete Animal") {
-            isConfirmingDelete = true
-        }.padding(.bottom,20)
-            .foregroundStyle(.red)
-            .alert(isPresented: $isConfirmingDelete) {
-                Alert(
-                    title: Text("Are you sure?"),
-                    message: Text("This action cannot be reversed"),
-                    primaryButton: .destructive(Text("Delete")) {
-                        do {
-                            try AnimalService.deleteAnimal(animal)
-                            dismiss()
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
-        
-        
-        Button("Edit Animal") {
-            isEditViewPresented = true
-            editAnimal = animal
-        }
-        
-        .sheet(isPresented: $isEditViewPresented) {
-            NavigationView {
-                AnimalEditView(animals: $editAnimal, animal: editAnimal)
-            }
-            
-            
-            
-            
-        }
+     
+       
     }
 }
 
