@@ -25,6 +25,11 @@ struct PetsView: View {
     private var allCompletedResults: FetchedResults<Task>
     
     @State private var isPresented: Bool = false
+    @State private var isAddButtonTapped: Bool = false
+    
+    
+    @State private var isButtonScaled = false
+
 
     var body: some View {
         NavigationStack {
@@ -152,32 +157,28 @@ struct PetsView: View {
             
             
             
-            Button {
-                isPresented = true
-            } label: {
-                Text("+ Add New Pets")
-                    .font(.system(size: 16))
-                    .padding(.vertical, 12)
-                    .frame(maxWidth: .infinity)
-                    .background(
-                        LinearGradient(gradient: Gradient(colors: [Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 1.0), Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.50)]), startPoint: .top, endPoint: .bottom)
-                    )
-                    .cornerRadius(8)
-            }
-            .foregroundColor(.white)
-            .padding(.horizontal, 20)
-            .padding(.bottom, 20)
-        }
-        .sheet(isPresented: $isPresented) {
-            NavigationView {
-                AddPetView { name, picture  in
+            HStack {
+                NavigationLink(destination: AddPetView { name, picture  in
                     do {
                         let imageData = picture?.jpegData(compressionQuality: 0.8)
                         try AnimalService.saveAnimal(name, picture: imageData)
                     } catch {
                         print(error)
                     }
+                }) {
+                    Text("+ Add New Pet")
+                        .frame(maxWidth: .infinity)
                 }
+                .font(.system(size: 16))
+                .padding(.vertical, 12)
+                
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 1.0), Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                .cornerRadius(8)
+                .foregroundColor(.white)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
+                
             }
         }
             

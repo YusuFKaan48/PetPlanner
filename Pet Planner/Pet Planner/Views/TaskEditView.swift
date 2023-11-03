@@ -19,17 +19,18 @@ struct TaskEditView: View {
     
     var body: some View {
         NavigationView {
+            
             VStack {
                 NavigationLink {
                     SelectPetView(selectedPet: $task.animals)
                 } label: {
-                 
-                        
-                        
-                        
-                        
-                        
-                        
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     HStack(spacing: 8) {
                         if let imageData = task.animals?.picture {
                             Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
@@ -41,16 +42,16 @@ struct TaskEditView: View {
                         
                         Text(task.animals!.name!).fontWeight(.semibold).foregroundColor(Color.black)
                         
-                       
+                        
                         Image(systemName: "info.circle.fill")
                             .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
                         Spacer()
                     }.padding(.horizontal,20)
                         .padding(.bottom, 20)
-
-                        
-                        
-                   
+                    
+                    
+                    
+                    
                 }
                 
                 
@@ -60,7 +61,7 @@ struct TaskEditView: View {
                     .font(.system(size: 18))
                     .fontWeight(.semibold)
                     .padding(.horizontal, 20)
-                    
+                
                 
                 Text("Task Name")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -71,13 +72,13 @@ struct TaskEditView: View {
                 
                 TextField("New task...", text: $editConfig.title).padding(.horizontal, 20)
                     .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
                         
-                        .frame( height: 50)
-                )
+                            .frame( height: 50)
+                    )
                 
-                .padding(20)
+                    .padding(20)
                 
                 Text("Task Notes")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -88,13 +89,13 @@ struct TaskEditView: View {
                 
                 TextField("Add notes...", text: $editConfig.notes ?? "").padding(.horizontal, 20)
                     .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
                         
-                        .frame( height: 50)
-                )
+                            .frame( height: 50)
+                    )
                 
-                .padding(20)
+                    .padding(20)
                 
                 
                 
@@ -110,64 +111,64 @@ struct TaskEditView: View {
                     .font(.system(size: 18))
                     .fontWeight(.semibold)
                     .padding(.horizontal, 20)
-                    
                 
                 
                 
-               
                 
                 
-               
+                
+                
+                
                 
                 Toggle(isOn: $editConfig.hasDate) {
-                  Text("Select Date")
-                      .frame(maxWidth: .infinity, alignment: .leading)
-                      .font(.system(size: 14))
-                      .fontWeight(.regular)
+                    Text("Select Date")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 14))
+                        .fontWeight(.regular)
                 }.padding(.horizontal, 20).padding(.vertical, 10)
-              
-              
-              
-              
-             
-              HStack {
-                  Image(systemName: "calendar")
-                      .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.leading, 20)
-                  
-                  DatePicker("", selection: $editConfig.taskDate ?? Date(), displayedComponents: .date).padding(.trailing, 20).padding(.vertical, 10)
-                      .foregroundColor(.gray)
-                      .font(.system(size: 12))
-                      .disabled(!editConfig.hasDate)
-                      
-              }
-              .background(
-                  RoundedRectangle(cornerRadius: 8)
-                      .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
-              )
-              .padding(.horizontal, 20)
-          
-              
-             
+                
+                
+                
+                
+                
+                HStack {
+                    Image(systemName: "calendar")
+                        .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.leading, 20)
+                    
+                    DatePicker("", selection: $editConfig.taskDate ?? Date(), displayedComponents: .date).padding(.trailing, 20).padding(.vertical, 10)
+                        .foregroundColor(.gray)
+                        .font(.system(size: 12))
+                        .disabled(!editConfig.hasDate)
+                    
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
+                )
+                .padding(.horizontal, 20)
                 
                 
                 
                 
                 
                 
-            
                 
-            
-                  Toggle(isOn: $editConfig.hasTime) {
+                
+                
+                
+                
+                
+                Toggle(isOn: $editConfig.hasTime) {
                     Text("Select Time")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.system(size: 14))
                         .fontWeight(.regular)
-                  }.padding(.horizontal, 20).padding(.vertical, 10)
+                }.padding(.horizontal, 20).padding(.vertical, 10)
                 
                 
                 
                 
-            
+                
                 HStack {
                     Image(systemName: "clock")
                         .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.8)).padding(.leading, 20)
@@ -176,16 +177,16 @@ struct TaskEditView: View {
                         .foregroundColor(.gray)
                         .font(.system(size: 12))
                         .disabled(!editConfig.hasTime)
-                        
+                    
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
                 )
                 .padding(.horizontal, 20)
-            
                 
-               
+                
+                
                 
                 
                 
@@ -213,11 +214,14 @@ struct TaskEditView: View {
                 .padding(.top, 20)
                 .foregroundColor(.white)
                 .disabled(!isFormValid)
+            }.onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
-        }
-        .accentColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
-        .onAppear {
-            editConfig = TaskEditConfig(task: task)
+            .accentColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
+            .onAppear {
+                editConfig = TaskEditConfig(task: task)
+            }
+            
         }
     }
 }

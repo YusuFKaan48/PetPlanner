@@ -60,6 +60,7 @@ struct TaskListView: View {
             TaskEditView(task: Binding($selectedTask)!)
        
             }
+                
          }.listStyle(PlainListStyle())
         }
    }

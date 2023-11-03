@@ -42,14 +42,13 @@ struct HomeView: View {
                         .font(.system(size: 18))
                         .fontWeight(.medium)
                         .padding(.horizontal, 20)
-                        .padding(.bottom, -6)
-                        .padding(.top, 24)
+                        .padding(.bottom, 6)
+                        .padding(.top, 16)
                         
-                    ScrollView(.horizontal) {
-                        HStack() {
-                            LazyHGrid(rows: [GridItem(.flexible())], spacing: 8) {
-                                ForEach(myListResults) { animal in
-                                    NavigationLink(destination: PetDetailView(animal: animal))    {
+                   
+                    VStack() {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]){ ForEach(myListResults, id: \.self) { animal in
+                            NavigationLink(destination: PetDetailView(animal: animal)) {
                                     let animalUncompletedTasks = todayResults.filter { $0.animals == animal }
                                     if !animalUncompletedTasks.isEmpty {
                                         HStack {
@@ -82,13 +81,14 @@ struct HomeView: View {
                                                 .stroke(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0), lineWidth: 1)
                                         )
                                         .foregroundColor(Color.black)
-                                    }
                                 }
+                                }.padding(.bottom, 16)
                             }
-                        }.padding(.leading, 1)
+                        }.padding(.horizontal, 12)
                             
-                    }
-                }.padding(.leading, 20)
+                        
+                    
+                }
                 }  else {
                     
                     Text("Today's have a task.")

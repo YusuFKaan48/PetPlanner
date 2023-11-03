@@ -20,6 +20,7 @@ struct AddPetView: View {
     }
 
     var body: some View {
+        ScrollView {
         VStack {
             ZStack {
                 if let selectedImage = selectedImage {
@@ -72,7 +73,9 @@ struct AddPetView: View {
             )
             
             .padding(20)
-            .padding(.bottom, 20)
+            
+            
+         Spacer()
             
             Button {
                 onSave(name, selectedImage)
@@ -92,11 +95,16 @@ struct AddPetView: View {
             .padding(.bottom, 20)
             .foregroundColor(.white)
             .disabled(!isFormValid)
+        }.onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
+        .padding(.top, 160)
         .onChange(of: selectedImage) { newImage in
             if newImage != nil {
                 isImagePickerPresented = false
             }
+        }
+            
         }
         
     }

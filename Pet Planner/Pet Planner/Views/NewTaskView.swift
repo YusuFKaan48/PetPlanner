@@ -26,6 +26,7 @@ struct NewTaskView: View {
     }
     
     var body: some View {
+        ScrollView {
         VStack {
             Text("Task Details")
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -187,10 +188,19 @@ struct NewTaskView: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 20)
+            
             .foregroundColor(.white)
             .disabled(!isFormValid)
+            
+            
+            
+          
+                       
+        } 
+        .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
         }
-        
     }
 }
 
