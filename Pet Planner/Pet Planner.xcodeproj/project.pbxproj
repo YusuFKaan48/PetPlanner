@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D23252022AD7D08000C9530C /* Pet_PlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23252012AD7D08000C9530C /* Pet_PlannerApp.swift */; };
+		D213BE312AFCFEC30082427C /* Pet_PlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213BE302AFCFEC30082427C /* Pet_PlannerApp.swift */; };
 		D23252042AD91D5E00C9530C /* SelectPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23252032AD91D5E00C9530C /* SelectPetView.swift */; };
 		D27780192AD54B6500BAE993 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27780182AD54B6500BAE993 /* PreviewData.swift */; };
 		D277801E2AD54EBD00BAE993 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277801D2AD54EBD00BAE993 /* Date+Extensions.swift */; };
@@ -36,7 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D23252012AD7D08000C9530C /* Pet_PlannerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pet_PlannerApp.swift; path = ../../../../../../../Downloads/RemindersApp/RemindersApp/Pet_PlannerApp.swift; sourceTree = "<group>"; };
+		D213BE302AFCFEC30082427C /* Pet_PlannerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pet_PlannerApp.swift; sourceTree = "<group>"; };
 		D23252032AD91D5E00C9530C /* SelectPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPetView.swift; sourceTree = "<group>"; };
 		D27780182AD54B6500BAE993 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		D277801D2AD54EBD00BAE993 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -107,6 +107,7 @@
 		D28505732ACFE474000FA305 = {
 			isa = PBXGroup;
 			children = (
+				D213BE302AFCFEC30082427C /* Pet_PlannerApp.swift */,
 				D285057E2ACFE474000FA305 /* Pet Planner */,
 				D285057D2ACFE474000FA305 /* Products */,
 			);
@@ -129,7 +130,6 @@
 				D27780212AD6797A00BAE993 /* Utils */,
 				D27780262AD679F900BAE993 /* EditConfig */,
 				D28505AB2AD0033D000FA305 /* Providers */,
-				D23252012AD7D08000C9530C /* Pet_PlannerApp.swift */,
 				D28505832ACFE476000FA305 /* Assets.xcassets */,
 				D28505852ACFE476000FA305 /* Preview Content */,
 				D28505AF2AD006E4000FA305 /* AnimalsModel.xcdatamodeld */,
@@ -258,6 +258,7 @@
 				D27780252AD679D700BAE993 /* TaskEditView.swift in Sources */,
 				D2980A112AEB9F8C00B77A49 /* AnimalEditConfig.swift in Sources */,
 				D29600F72AD3F1C900421CCF /* PetsView.swift in Sources */,
+				D213BE312AFCFEC30082427C /* Pet_PlannerApp.swift in Sources */,
 				D29600F92AD3FF0100421CCF /* PetDetailView.swift in Sources */,
 				D28505B12AD006E4000FA305 /* AnimalsModel.xcdatamodeld in Sources */,
 				D29809FE2ADD074B00B77A49 /* TaskStatsBuilder.swift in Sources */,
@@ -270,7 +271,6 @@
 				D28505822ACFE474000FA305 /* ContentView.swift in Sources */,
 				D28505A22ACFF8F6000FA305 /* AddPetView.swift in Sources */,
 				D28505B42AD01EC2000FA305 /* AnimalService.swift in Sources */,
-				D23252022AD7D08000C9530C /* Pet_PlannerApp.swift in Sources */,
 				D27780192AD54B6500BAE993 /* PreviewData.swift in Sources */,
 				D2980A062AE146C100B77A49 /* İmagePicker.swift in Sources */,
 				D29600F52AD3EF2000421CCF /* HomeView.swift in Sources */,
@@ -405,6 +405,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pet Planner/Preview Content\"";
@@ -435,6 +436,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pet Planner/Preview Content\"";

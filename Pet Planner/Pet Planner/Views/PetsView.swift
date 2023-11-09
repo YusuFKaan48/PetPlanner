@@ -32,6 +32,7 @@ struct PetsView: View {
 
 
     var body: some View {
+       
         NavigationStack {
             VStack {
                 Text("Pets")
@@ -91,7 +92,7 @@ struct PetsView: View {
                             }.padding(.bottom, 16)
                             }
                         }
-                    }.padding(.horizontal, 12)
+                    }
                     
                 }
             }
@@ -181,9 +182,9 @@ struct PetsView: View {
                 
             }
         }
-            
-            }
         }
+            }
+        
 
 
 

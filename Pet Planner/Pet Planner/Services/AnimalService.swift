@@ -22,8 +22,14 @@ class AnimalService {
         let animal = Animals(context: viewContext)
         animal.name = name
         animal.picture = picture
-        try save()
+        do {
+            try save()
+            print("Animal saved successfully")
+        } catch {
+            print("Error saving animal: \(error)")
+        }
     }
+
     
     static func updateAnimal(animals: Animals, editConfig: AnimalEditConfig) throws -> Bool {
         

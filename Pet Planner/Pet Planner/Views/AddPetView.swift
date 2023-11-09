@@ -79,6 +79,8 @@ struct AddPetView: View {
             
             Button {
                 onSave(name, selectedImage)
+                print("Save button tapped")
+                
                 dismiss()
             } label: {
                 Text("Save")
@@ -99,11 +101,18 @@ struct AddPetView: View {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
         .padding(.top, 160)
-        .onChange(of: selectedImage) { newImage in
+            
+            
+        .onChange(of: selectedImage) { oldImage, newImage in
             if newImage != nil {
                 isImagePickerPresented = false
+            } else {
+                isImagePickerPresented = true
             }
         }
+            
+        
+            
             
         }
         

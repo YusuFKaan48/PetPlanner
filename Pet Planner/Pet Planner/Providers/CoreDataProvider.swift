@@ -14,10 +14,16 @@ class CoreDataProvider {
 
     private init() {
         persistentContainer = NSPersistentContainer(name: "AnimalsModel")
+        
+       
         persistentContainer.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Error initializing AnimalModel: \(error), \(error.userInfo)")
+            } else {
+                print("Core Data initialized successfully")
             }
         }
     }
 }
+
+
