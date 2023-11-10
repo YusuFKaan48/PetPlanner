@@ -10,6 +10,7 @@ import SwiftUI
 
 @main
 struct Pet_PlannerApp: App {
+    
     var body: some Scene {
         WindowGroup {
             ContentView().environment(\.managedObjectContext, CoreDataProvider.shared.persistentContainer.viewContext)

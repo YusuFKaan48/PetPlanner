@@ -39,7 +39,8 @@ struct TaskStatView: View {
                 }
                 Spacer()
             }
-            .frame(width: 166, height: 70) 
+            .frame(maxWidth: .infinity)
+            .frame(height: 70)
 
             .background(
                 RoundedRectangle(cornerRadius: 16)

@@ -43,12 +43,12 @@ struct PetDetailView: View {
                             .scaledToFill()
                             .frame(width: 76, height: 76)
                             .cornerRadius(125)
+                            .padding(.trailing, 8)
                     }
 
                     Text("\(animal.name ?? "Unknown")")
                         .fontWeight(.semibold)
                         .font(.title)
-                        .padding(.leading, 8)
 
                     Button {
                         isEditViewPresented = true
