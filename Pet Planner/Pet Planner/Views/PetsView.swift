@@ -33,6 +33,7 @@ struct PetsView: View {
 
     var body: some View {
        
+            
         NavigationStack {
             
             VStack {
@@ -184,8 +185,9 @@ struct PetsView: View {
                 
             }
         }
+        }
     }
-}
+
         
 
 

@@ -21,14 +21,6 @@ struct TaskEditView: View {
         NavigationView {
             
             VStack {
-                NavigationLink {
-                    SelectPetView(selectedPet: $task.animals)
-                } label: {
-                    
-                    
-                    
-                    
-                    
                     
                     
                     HStack(spacing: 8) {
@@ -42,9 +34,7 @@ struct TaskEditView: View {
                         
                         Text(task.animals!.name!).fontWeight(.semibold).foregroundColor(Color.black)
                         
-                        
-                        Image(systemName: "info.circle.fill")
-                            .foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
+
                         Spacer()
                     }.padding(.horizontal,20)
                         .padding(.bottom, 20)
@@ -52,7 +42,7 @@ struct TaskEditView: View {
                     
                     
                     
-                }
+               
                 
                 
                 
@@ -221,7 +211,6 @@ struct TaskEditView: View {
             .onAppear {
                 editConfig = TaskEditConfig(task: task)
             }
-            
         }
     }
 }

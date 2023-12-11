@@ -41,29 +41,39 @@ struct TaskListView: View {
     
     var body: some View {
         VStack {
-            List {
-               ForEach(tasks) { task in
-            TaskDetailView(task: task, isSelected: isTaskSelected(task)) { event in
-                switch event {
-                case .onSelect(let task):
-                    selectedTask = task
-                case .onCheckedChange(let task, let isDone):
-                    taskCheckedChanged(task: task, isDone: isDone)
-                case .onEdit:
-                    showTaskDetail = true
+            if tasks.isEmpty {
+                Text("There are no tasks.")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .font(.system(size: 12))
+                    .fontWeight(.medium)
+                    .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
+                    .padding(.top, 12)
+                
+            } else {
+                List {
+                    ForEach(tasks) { task in
+                        TaskDetailView(task: task, isSelected: isTaskSelected(task)) { event in
+                            switch event {
+                            case .onSelect(let task):
+                                selectedTask = task
+                            case .onCheckedChange(let task, let isDone):
+                                taskCheckedChanged(task: task, isDone: isDone)
+                            case .onEdit:
+                                showTaskDetail = true
+                            }
+                        }
+                    }
+                    .onDelete(perform: deleteTask)
+                    .listStyle(PlainListStyle())
+                    .sheet(isPresented: $showTaskDetail) {
+                        TaskEditView(task: Binding($selectedTask)!)
+                    }
                 }
-                
+                .listStyle(PlainListStyle())
             }
-        }.onDelete(perform: deleteTask)
-               .listStyle(PlainListStyle())
-        .sheet(isPresented: $showTaskDetail) {
-            TaskEditView(task: Binding($selectedTask)!)
-       
-            }
-                
-         }.listStyle(PlainListStyle())
         }
-   }
+    }
+
 }
 
 

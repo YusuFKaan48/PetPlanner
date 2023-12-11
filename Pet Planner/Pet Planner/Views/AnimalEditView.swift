@@ -10,6 +10,10 @@ import Photos
 
 struct AnimalEditView: View {
     
+    @FetchRequest(sortDescriptors: [])
+    private var myAnimalResults: FetchedResults<Animals>
+   
+    
     @Binding var animals: Animals
     let animal: Animals
     

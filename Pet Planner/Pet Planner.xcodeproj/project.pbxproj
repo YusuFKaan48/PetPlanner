@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D213BE312AFCFEC30082427C /* Pet_PlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213BE302AFCFEC30082427C /* Pet_PlannerApp.swift */; };
-		D23252042AD91D5E00C9530C /* SelectPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23252032AD91D5E00C9530C /* SelectPetView.swift */; };
 		D27780192AD54B6500BAE993 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27780182AD54B6500BAE993 /* PreviewData.swift */; };
 		D277801E2AD54EBD00BAE993 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277801D2AD54EBD00BAE993 /* Date+Extensions.swift */; };
 		D27780202AD54F5500BAE993 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277801F2AD54F5500BAE993 /* TaskDetailView.swift */; };
@@ -37,7 +36,6 @@
 
 /* Begin PBXFileReference section */
 		D213BE302AFCFEC30082427C /* Pet_PlannerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pet_PlannerApp.swift; sourceTree = "<group>"; };
-		D23252032AD91D5E00C9530C /* SelectPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPetView.swift; sourceTree = "<group>"; };
 		D27780182AD54B6500BAE993 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		D277801D2AD54EBD00BAE993 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		D277801F2AD54F5500BAE993 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 				D277801F2AD54F5500BAE993 /* TaskDetailView.swift */,
 				D27780242AD679D700BAE993 /* TaskEditView.swift */,
 				D2980A122AEBA15C00B77A49 /* AnimalEditView.swift */,
-				D23252032AD91D5E00C9530C /* SelectPetView.swift */,
 				D29809FF2ADD0CC700B77A49 /* TaskStatView.swift */,
 			);
 			path = Views;
@@ -253,7 +250,6 @@
 			files = (
 				D2980A022ADFB28300B77A49 /* NewTaskView.swift in Sources */,
 				D2980A002ADD0CC700B77A49 /* TaskStatView.swift in Sources */,
-				D23252042AD91D5E00C9530C /* SelectPetView.swift in Sources */,
 				D27780202AD54F5500BAE993 /* TaskDetailView.swift in Sources */,
 				D27780252AD679D700BAE993 /* TaskEditView.swift in Sources */,
 				D2980A112AEB9F8C00B77A49 /* AnimalEditConfig.swift in Sources */,

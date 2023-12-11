@@ -23,7 +23,6 @@ struct HomeView: View {
     
     
     
-    
     var body: some View {
         NavigationStack {
            
@@ -49,7 +48,7 @@ struct HomeView: View {
                         
                    
                  
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]){ ForEach(myListResults, id: \.self) { animal in
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]){  ForEach(myListResults.sorted(by: { $0.name ?? "unkown" < $1.name ?? "unkown" }), id: \.self) { animal in
                             NavigationLink(destination: PetDetailView(animal: animal)) {
                                     let animalUncompletedTasks = todayResults.filter { $0.animals == animal }
                                     if !animalUncompletedTasks.isEmpty {
@@ -88,8 +87,9 @@ struct HomeView: View {
                                 }
                             }.padding(.bottom, 16)
                                 .padding(.horizontal, 16)
+                               
                 }.padding(.horizontal, 8)
-                    
+                      
                     
                 }  else {
                     

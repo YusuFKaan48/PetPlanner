@@ -72,6 +72,7 @@ struct PetDetailView: View {
                         isConfirmingDelete = true
                     } label: {
                         Image(systemName: "trash")
+                            .foregroundColor(Color.red)
                     }
                     .buttonStyle(BorderlessButtonStyle())
                     .alert(isPresented: $isConfirmingDelete) {
