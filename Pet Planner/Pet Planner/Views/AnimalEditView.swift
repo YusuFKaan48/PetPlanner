@@ -37,7 +37,7 @@ struct AnimalEditView: View {
                     .fontWeight(.semibold)
                     .padding(.horizontal, 20)
                 
-                Text("Animals picture")
+                Text("Update the picture")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 14))
                     .fontWeight(.regular)
@@ -89,7 +89,7 @@ struct AnimalEditView: View {
                     }
                 }.padding(.bottom, 20)
                 
-                Text("Animals name")
+                Text("Update the name")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 14))
                     .fontWeight(.regular)

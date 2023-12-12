@@ -21,6 +21,7 @@ struct HomeView: View {
     @FetchRequest(fetchRequest: AnimalService.tasksByStatType(statType: .todayCompleted))
     private var todayCompletedResults: FetchedResults<Task>
     
+
     
     
     var body: some View {
@@ -43,54 +44,47 @@ struct HomeView: View {
                         .font(.system(size: 18))
                         .fontWeight(.medium)
                         .padding(.horizontal, 24)
-                        .padding(.bottom, 6)
                         .padding(.top, 16)
                         
-                   
-                 
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]){  ForEach(myListResults.sorted(by: { $0.name ?? "unkown" < $1.name ?? "unkown" }), id: \.self) { animal in
-                            NavigationLink(destination: PetDetailView(animal: animal)) {
-                                    let animalUncompletedTasks = todayResults.filter { $0.animals == animal }
-                                    if !animalUncompletedTasks.isEmpty {
-                                        HStack {
-                                            if let imageData = animal.picture {
-                                                Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
-                                                    .resizable()
-                                                    .scaledToFill()
-                                                    .frame(width: 36, height: 36)
-                                                    .cornerRadius(25)
-                                            } else {
-                                                Image(systemName: "photo")
-                                                    .resizable()
-                                                    .frame(width: 36, height: 36)
-                                                    .cornerRadius(25)
-                                            }
-                                            VStack(alignment: .leading) {
-                                                Text(animal.name ?? "Unknown")
-                                                    .font(.system(size: 16))
-                                                    .foregroundColor(.black)
-                                                    .fontWeight(.medium)
-
-                                                Text("Today: \(animalUncompletedTasks.count) task")
-                                                    .font(.system(size: 14))
-                                                    .foregroundColor(.black.opacity(0.5))
-                                            }
-                                        }
-                                        .frame(maxWidth: .infinity)
-                                        .frame(height: 70)
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 16)
-                                                .stroke(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0), lineWidth: 1)
-                                        )
-                                        .foregroundColor(Color.black)
-                                }
-                                }
-                            }.padding(.bottom, 16)
-                                .padding(.horizontal, 16)
-                               
-                }.padding(.horizontal, 8)
-                      
+                        
+                        
                     
+                    ScrollView(.horizontal) {
+                        LazyHStack(spacing: 32) {
+                            ForEach(Array(myListResults.filter { animal in
+                                !todayResults.filter { $0.animals == animal }.isEmpty
+                            }), id: \.self) { animal in
+                                NavigationLink(destination: PetDetailView(animal: animal)) {
+                                    VStack(alignment: .center) {
+                                        if let imageData = animal.picture {
+                                            Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 56, height: 56)
+                                                .cornerRadius(36)
+                                        } else {
+                                            Image(systemName: "photo")
+                                                .resizable()
+                                                .frame(width: 56, height: 56)
+                                                .cornerRadius(36)
+                                        }
+                                        VStack(alignment: .center) {
+                                            Text(animal.name ?? "Unknown")
+                                                .font(.system(size: 16))
+                                                .foregroundColor(.black)
+                                                .fontWeight(.medium)
+                                        }
+                                    }
+                                    .foregroundColor(Color.black)
+                                }
+                            }
+                        }
+                        .padding(.leading, 24)
+                        
+                        .frame(height: 90)
+                    }
+
+                        
                 }  else {
                     
                     Text("Today's have a task.")
