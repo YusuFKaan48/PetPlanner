@@ -38,7 +38,6 @@ struct TaskDetailView: View {
                 .font(.title)
                 .fontWeight(.regular)
                 .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
-                
                 .onTapGesture {
                     checked.toggle()
                     
@@ -50,20 +49,24 @@ struct TaskDetailView: View {
                 }
             
             VStack(alignment: .leading) {
-                Text(task.title ?? "")
-               
+                Text(task.title ?? "").font(.system(size: 16))
+                
+                if let notes = task.notes, !notes.isEmpty {
+                    Text(notes).font(.system(size: 14)).opacity(0.8)
+                }
+                
                 HStack {
                     if let taskDate = task.taskDate {
-                        Text(formatDate(taskDate))
+                        Text(formatDate(taskDate)).font(.system(size: 12))
                     }
                     
                     if let taskTime = task.taskTime {
-                        Text(taskTime.formatted(date: .omitted, time: .shortened))
+                        Text(taskTime.formatted(date: .omitted, time: .shortened)).font(.system(size: 12))
                     }
                     
                 }.frame(maxWidth: .infinity, alignment: .leading)
-                .font(.caption)
-                .opacity(0.4)
+                    .font(.caption)
+                    .opacity(0.4)
             }
             Spacer()
             Image(systemName: "info.circle.fill").foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
@@ -78,7 +81,6 @@ struct TaskDetailView: View {
         }.contentShape(Rectangle())
             .onTapGesture {
                 onEvent(.onSelect(task))
-            
         }
     }
 }

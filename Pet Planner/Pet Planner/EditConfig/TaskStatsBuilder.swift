@@ -27,9 +27,9 @@ struct TaskStatsBuilder {
     func build(myListResults: FetchedResults<Animals>) -> TaskStatsValues {
         
         let tasksArray = myListResults.compactMap {
-                $0.tasks?.allObjects as? [Task]
+            $0.tasks?.allObjects as? [Task]
         }.reduce([], +)
-           
+        
         let todaysCount = calculateTodaysCount(tasks: tasksArray)
         let todaysCompletedCount = calculateTodaysCompletedCount(tasks: tasksArray)
         let allCount = calculateAllCount(tasks: tasksArray)
@@ -39,23 +39,23 @@ struct TaskStatsBuilder {
     }
     
     private func calculateTodaysCount(tasks: [Task]) -> Int {
-            return tasks.reduce(0) { result, task in
-                
-                if !task.isDone && task.taskDate?.isToday ?? false {
-                    return result + 1
-                }
-                return result
+        return tasks.reduce(0) { result, task in
+            
+            if !task.isDone && task.taskDate?.isToday ?? false {
+                return result + 1
             }
+            return result
         }
-        
-        private func calculateTodaysCompletedCount(tasks: [Task]) -> Int {
-            return tasks.reduce(0) { result, task in
-                if task.isDone && task.taskDate?.isToday ?? false {
-                    return result + 1
-                }
-                return result
+    }
+    
+    private func calculateTodaysCompletedCount(tasks: [Task]) -> Int {
+        return tasks.reduce(0) { result, task in
+            if task.isDone && task.taskDate?.isToday ?? false {
+                return result + 1
             }
+            return result
         }
+    }
     
     private func calculateCompletedCount(tasks: [Task]) -> Int {
         return tasks.reduce(0) { result, task in

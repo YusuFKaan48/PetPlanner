@@ -29,13 +29,13 @@ class AnimalService {
             print("Error saving animal: \(error)")
         }
     }
-
+    
     
     static func updateAnimal(animals: Animals, editConfig: AnimalEditConfig) throws -> Bool {
         
         animals.name = editConfig.name
         animals.picture = editConfig.picture
-
+        
         try save()
         return true
     }
@@ -44,7 +44,7 @@ class AnimalService {
         viewContext.delete(animal)
         try save()
     }
-
+    
     
     static func deleteTask(_ task: Task) throws {
         viewContext.delete(task)
@@ -65,16 +65,16 @@ class AnimalService {
     }
     
     static func saveTaskToMyAnimal(animal: Animals, taskNotes: String? ,taskTitle: String, taskDate: Date?, taskTime: Date?) throws {
-           let task = Task(context: viewContext)
-           task.title = taskTitle
-           task.notes = taskNotes
-           task.taskDate = taskDate
-           task.taskTime = taskTime
-           animal.addToTasks(task)
-           try save()
-       }
-
-
+        let task = Task(context: viewContext)
+        task.title = taskTitle
+        task.notes = taskNotes
+        task.taskDate = taskDate
+        task.taskTime = taskTime
+        animal.addToTasks(task)
+        try save()
+    }
+    
+    
     
     static func tasksByStatType(statType: TaskStatType) -> NSFetchRequest<Task> {
         
@@ -86,25 +86,25 @@ class AnimalService {
         var endOfDay: Date
         
         switch statType {
-            case .all:
-                request.predicate = NSPredicate(format: "isDone = false")
-            case .allCompleted:
-                request.predicate = NSPredicate(format: "isDone = true")
+        case .all:
+            request.predicate = NSPredicate(format: "isDone = false")
+        case .allCompleted:
+            request.predicate = NSPredicate(format: "isDone = true")
         case .today:
-                let today = Date()
-                startOfDay = calendar.startOfDay(for: today)
-                endOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: today)!
-                request.predicate = NSPredicate(format: "(taskDate >= %@) AND (taskDate <= %@) AND isDone = false", startOfDay as NSDate, endOfDay as NSDate)
+            let today = Date()
+            startOfDay = calendar.startOfDay(for: today)
+            endOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: today)!
+            request.predicate = NSPredicate(format: "(taskDate >= %@) AND (taskDate <= %@) AND isDone = false", startOfDay as NSDate, endOfDay as NSDate)
         case .todayCompleted:
-                let today = Date()
-                startOfDay = calendar.startOfDay(for: today)
-                endOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: today)!
-                request.predicate = NSPredicate(format: "(taskDate >= %@) AND (taskDate <= %@) AND isDone = true", startOfDay as NSDate, endOfDay as NSDate)
+            let today = Date()
+            startOfDay = calendar.startOfDay(for: today)
+            endOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: today)!
+            request.predicate = NSPredicate(format: "(taskDate >= %@) AND (taskDate <= %@) AND isDone = true", startOfDay as NSDate, endOfDay as NSDate)
         }
         
         return request
     }
-
+    
     
     static func getTasksByList(animal: Animals) -> NSFetchRequest<Task> {
         let request = Task.fetchRequest()

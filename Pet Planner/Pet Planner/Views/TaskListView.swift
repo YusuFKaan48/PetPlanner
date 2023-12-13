@@ -48,9 +48,8 @@ struct TaskListView: View {
                     .fontWeight(.medium)
                     .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
                     .padding(.top, 12)
-                
             } else {
-                List {
+                LazyVStack {
                     ForEach(tasks) { task in
                         TaskDetailView(task: task, isSelected: isTaskSelected(task)) { event in
                             switch event {
@@ -62,20 +61,16 @@ struct TaskListView: View {
                                 showTaskDetail = true
                             }
                         }
-                    }
-                    .onDelete(perform: deleteTask)
-                    .listStyle(PlainListStyle())
-                    .sheet(isPresented: $showTaskDetail) {
-                        TaskEditView(task: Binding($selectedTask)!)
+                        Divider()
                     }
                 }
-                .listStyle(PlainListStyle())
             }
         }
+        .sheet(isPresented: $showTaskDetail) {
+            TaskEditView(task: Binding($selectedTask)!)
+        }
     }
-
 }
-
 
 struct TaskListView_Previews: PreviewProvider {
     
@@ -90,8 +85,8 @@ struct TaskListView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        
-      TaskListViewContainer()
+
+        TaskListViewContainer()
             .environment(\.managedObjectContext, CoreDataProvider.shared.persistentContainer.viewContext)
     }
 }

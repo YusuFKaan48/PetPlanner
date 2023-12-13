@@ -12,7 +12,7 @@ struct AnimalEditView: View {
     
     @FetchRequest(sortDescriptors: [])
     private var myAnimalResults: FetchedResults<Animals>
-   
+    
     
     @Binding var animals: Animals
     let animal: Animals
@@ -35,14 +35,14 @@ struct AnimalEditView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 18))
                     .fontWeight(.semibold)
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 24)
                 
                 Text("Update the picture")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 14))
                     .fontWeight(.regular)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 10)
+                    .padding(.horizontal, 24)
+                    .padding(.top, 12)
                 
                 ZStack {
                     if let selectedImageData = selectedImageData, let image = UIImage(data: selectedImageData) {
@@ -87,23 +87,23 @@ struct AnimalEditView: View {
                             isImagePickerPresented = false
                         }))
                     }
-                }.padding(.bottom, 20)
+                }.padding(.bottom, 24)
                 
                 Text("Update the name")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 14))
                     .fontWeight(.regular)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 10)
+                    .padding(.horizontal, 24)
+                    .padding(.top, 12)
                 
                 TextField("Pet's name", text: $editConfig.name)
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 24)
                     .background(
                         RoundedRectangle(cornerRadius: 8)
                             .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
                             .frame(height: 50)
                     )
-                    .padding(20)
+                    .padding(24)
                 
                 Button {
                     if let selectedImageData = selectedImageData {
@@ -126,9 +126,12 @@ struct AnimalEditView: View {
                         )
                         .cornerRadius(8)
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 24)
                 .foregroundColor(.white)
                 .disabled(!isFormValid)
+                .onTapGesture {
+                    giveHapticFeedback()
+                }
             }
         }
         .accentColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))

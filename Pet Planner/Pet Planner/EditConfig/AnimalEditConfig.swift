@@ -10,11 +10,11 @@ import Foundation
 struct AnimalEditConfig {
     var name: String = ""
     var picture: Data?
-
-   
+    
+    
     
     init() { }
-
+    
     init(animals: Animals) {
         name = animals.name ?? ""
         picture = animals.picture
