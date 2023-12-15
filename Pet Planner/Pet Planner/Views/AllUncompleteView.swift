@@ -19,7 +19,7 @@ struct AllUncompleteView: View {
     private var allCompletedResults: FetchedResults<Task>
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             TaskListView(tasks: allResults)
         }
     }

@@ -25,7 +25,7 @@ struct NewTaskView: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
                 Text("Task Details")
                     .frame(maxWidth: .infinity, alignment: .leading)

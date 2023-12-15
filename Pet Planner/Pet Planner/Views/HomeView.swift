@@ -30,7 +30,7 @@ struct HomeView: View {
                 .fontWeight(.semibold)
                 .padding(.horizontal, 24)
             
-            ScrollView{
+            ScrollView(showsIndicators: false) {
                 VStack {
                     if !todayResults.isEmpty {
                         Text("Today's have a task.")
@@ -39,7 +39,7 @@ struct HomeView: View {
                             .fontWeight(.medium)
                             .padding(.horizontal, 24)
                     
-                        ScrollView(.horizontal) {
+                        ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 32) {
                                 ForEach(Array(myListResults.filter { animal in
                                     !todayResults.filter { $0.animals == animal }.isEmpty

@@ -34,6 +34,7 @@ struct TaskDetailView: View {
     
     var body: some View {
         HStack {
+            
             Image(systemName: checked ? "checkmark.circle": "circle")
                 .font(.title)
                 .fontWeight(.regular)
@@ -48,13 +49,26 @@ struct TaskDetailView: View {
                     }
                 }
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(task.title ?? "").font(.system(size: 16))
                 
                 if let notes = task.notes, !notes.isEmpty {
                     Text(notes).font(.system(size: 14)).opacity(0.8)
                 }
+            }
+        
                 
+                VStack(alignment: .trailing, spacing: 4) {
+                    
+                    Image(systemName: "info.circle.fill").foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
+                        .opacity(isSelected ? 1.0: 0.0)
+                        .onTapGesture {
+                            onEvent(.onEdit)
+                        }
+                        .onAppear {
+                            checked = task.isDone
+                        }
+                    
                 HStack {
                     if let taskDate = task.taskDate {
                         Text(formatDate(taskDate)).font(.system(size: 12))
@@ -64,19 +78,17 @@ struct TaskDetailView: View {
                         Text(taskTime.formatted(date: .omitted, time: .shortened)).font(.system(size: 12))
                     }
                     
-                }.frame(maxWidth: .infinity, alignment: .leading)
+                }.frame(maxWidth: .infinity, alignment: .trailing)
                     .font(.caption)
                     .opacity(0.4)
-            }
-            Spacer()
-            Image(systemName: "info.circle.fill").foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
-                .opacity(isSelected ? 1.0: 0.0)
-                .onTapGesture {
-                    onEvent(.onEdit)
+                    
+                  
+                    
                 }
-                .onAppear {
-                    checked = task.isDone
-                }
+                    
+            
+           
+            
             
         }.contentShape(Rectangle())
             .onTapGesture {

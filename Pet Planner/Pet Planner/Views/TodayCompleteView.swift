@@ -20,7 +20,7 @@ struct TodayCompleteView: View {
     private var todayCompletedResults: FetchedResults<Task>
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             TaskListView(tasks: todayCompletedResults)
         }
     }

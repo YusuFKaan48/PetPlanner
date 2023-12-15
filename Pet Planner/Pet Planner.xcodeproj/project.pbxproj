@@ -12,7 +12,6 @@
 		D2468A2C2B298DEC003CE78D /* TodayUncompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2468A2B2B298DEC003CE78D /* TodayUncompleteView.swift */; };
 		D2468A2E2B298F0C003CE78D /* AllCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2468A2D2B298F0C003CE78D /* AllCompleteView.swift */; };
 		D2468A302B298F9B003CE78D /* AllUncompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2468A2F2B298F9B003CE78D /* AllUncompleteView.swift */; };
-		D2468A342B299A05003CE78D /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2468A332B299A05003CE78D /* HapticFeedback.swift */; };
 		D27780192AD54B6500BAE993 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27780182AD54B6500BAE993 /* PreviewData.swift */; };
 		D277801E2AD54EBD00BAE993 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277801D2AD54EBD00BAE993 /* Date+Extensions.swift */; };
 		D27780202AD54F5500BAE993 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277801F2AD54F5500BAE993 /* TaskDetailView.swift */; };
@@ -45,7 +44,6 @@
 		D2468A2B2B298DEC003CE78D /* TodayUncompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUncompleteView.swift; sourceTree = "<group>"; };
 		D2468A2D2B298F0C003CE78D /* AllCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCompleteView.swift; sourceTree = "<group>"; };
 		D2468A2F2B298F9B003CE78D /* AllUncompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUncompleteView.swift; sourceTree = "<group>"; };
-		D2468A332B299A05003CE78D /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		D27780182AD54B6500BAE993 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		D277801D2AD54EBD00BAE993 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		D277801F2AD54F5500BAE993 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 			children = (
 				D27780222AD6799800BAE993 /* CustomOperators.swift */,
 				D2DCA4E92ADA71E100D18F32 /* Delay.swift */,
-				D2468A332B299A05003CE78D /* HapticFeedback.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -264,7 +261,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2980A022ADFB28300B77A49 /* NewTaskView.swift in Sources */,
-				D2468A342B299A05003CE78D /* HapticFeedback.swift in Sources */,
 				D2980A002ADD0CC700B77A49 /* TaskStatView.swift in Sources */,
 				D27780202AD54F5500BAE993 /* TaskDetailView.swift in Sources */,
 				D27780252AD679D700BAE993 /* TaskEditView.swift in Sources */,

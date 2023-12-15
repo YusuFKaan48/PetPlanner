@@ -22,7 +22,6 @@ struct AddPetView: View {
     }
     
     var body: some View {
-        
         VStack {
             ZStack {
                 if let selectedImage = selectedImage {
@@ -98,9 +97,6 @@ struct AddPetView: View {
             .padding(.bottom, 24)
             .foregroundColor(.white)
             .disabled(!isFormValid)
-        }
-        .onTapGesture {
-            giveHapticFeedback()
         }
         .onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

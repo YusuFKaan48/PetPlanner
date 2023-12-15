@@ -129,9 +129,6 @@ struct AnimalEditView: View {
                 .padding(.horizontal, 24)
                 .foregroundColor(.white)
                 .disabled(!isFormValid)
-                .onTapGesture {
-                    giveHapticFeedback()
-                }
             }
         }
         .accentColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
@@ -167,6 +164,7 @@ struct AnimalEditView: View {
                 }
             }
             photoLibraryPermissionRequested = true
+            
         }
     }
 }

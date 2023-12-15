@@ -24,7 +24,9 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            selectedImage = nil
+            picker.dismiss(animated: true) {
+                self.selectedImage = nil
+            }
         }
     }
     
@@ -32,11 +34,13 @@ struct ImagePicker: UIViewControllerRepresentable {
         return Coordinator(selectedImage: $selectedImage)
     }
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+    func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
+        picker.modalPresentationStyle = .fullScreen 
         return picker
     }
+
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
     }

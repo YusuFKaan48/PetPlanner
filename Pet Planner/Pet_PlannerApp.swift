@@ -13,7 +13,7 @@ struct Pet_PlannerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environment(\.managedObjectContext, CoreDataProvider.shared.persistentContainer.viewContext).colorScheme(.light)
+            ContentView().environment(\.managedObjectContext, CoreDataProvider.shared.persistentContainer.viewContext).preferredColorScheme(.light)
         }
     }
 }

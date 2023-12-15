@@ -12,6 +12,7 @@ struct TaskEditView: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var task: Task
     @State var editConfig: TaskEditConfig = TaskEditConfig()
+    @State private var isConfirmingDelete: Bool = false
     
     private var isFormValid: Bool {
         !editConfig.title.isEmpty
@@ -20,18 +21,42 @@ struct TaskEditView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack(spacing: 8) {
-                    if let imageData = task.animals?.picture {
+                    HStack(spacing: 8) {
+                    if let imageData = task.animals?.picture,
+                       let animalName = task.animals?.name {
                         Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 64, height: 64)
                             .cornerRadius(125)
+                        Text(animalName).fontWeight(.semibold).foregroundColor(Color.black)
                     }
-                    
-                    Text(task.animals!.name!).fontWeight(.semibold).foregroundColor(Color.black)
+              
                     
                     Spacer()
+                    
+                    Button {
+                        isConfirmingDelete = true
+                    } label: {
+                        Image(systemName: "trash")
+                            .foregroundColor(Color.red)
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .alert(isPresented: $isConfirmingDelete) {
+                        Alert(
+                            title: Text("Are you sure?"),
+                            message: Text("This action cannot be reversed"),
+                            primaryButton: .destructive(Text("Delete")) {
+                                do {
+                                    try AnimalService.deleteTask(task)
+                                    dismiss()
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
                 }.padding(.horizontal,24)
                     .padding(.bottom, 24)
                 
@@ -151,13 +176,11 @@ struct TaskEditView: View {
             }.onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
-            .onTapGesture {
-                giveHapticFeedback()
-            }
             .accentColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
             .onAppear {
                 editConfig = TaskEditConfig(task: task)
             }
+            
         }
     }
 }

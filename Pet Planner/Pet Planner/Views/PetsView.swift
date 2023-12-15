@@ -37,7 +37,7 @@ struct PetsView: View {
                 .fontWeight(.semibold)
                 .padding(.leading, 24)
             
-            ScrollView{
+            ScrollView(showsIndicators: false) {
                 VStack {
                     if myAnimalResults.isEmpty {
                         Text("No pets here...")
@@ -81,7 +81,9 @@ struct PetsView: View {
                                 .foregroundColor(Color.black)
                             }
                             .padding(.horizontal, 16)
+                            .padding(.vertical , 8)
                             }.padding(.horizontal, 8)
+                                .padding(.top, 1)
                         }
                     }
                 }
@@ -160,9 +162,6 @@ struct PetsView: View {
                 .foregroundColor(.white)
                 .padding(.horizontal, 24)
                 .padding(.bottom, 24)
-                .onTapGesture {
-                    giveHapticFeedback()
-                }
             }
         }
     }
