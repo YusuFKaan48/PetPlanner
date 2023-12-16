@@ -117,11 +117,21 @@ struct HomeView: View {
                         TaskListView(tasks: todayResults).padding(.horizontal, 24).padding(.top, 8)
                         
                     }  else {
+                        HStack(alignment: .bottom) {
                         Text("Daily Task List")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.system(size: 18))
                             .fontWeight(.medium)
-                            .padding(.horizontal, 24)
+                            
+                            
+                            
+                            NavigationLink {
+                                TodayCompleteView().padding(.horizontal, 24)
+                            } label: {
+                                TaskStatView( title: "Completed Tasks", count: taskStatsValues.todaysCompletedCount, icon: "checkmark.circle")
+                            }.opacity(0.8)
+                        }.padding(.leading, 24)
+                            .padding(.trailing, 16)
                             .padding(.top, 24)
                         
                         Image(uiImage: UIImage(named: "Bored") ?? UIImage(systemName: "photo")!)

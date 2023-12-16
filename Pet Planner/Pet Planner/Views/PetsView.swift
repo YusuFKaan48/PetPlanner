@@ -115,11 +115,22 @@ struct PetsView: View {
                     TaskListView(tasks: allResults).padding(.horizontal, 24).padding(.top, 8)
                     
                 } else {
+                    HStack(alignment: .bottom) {
+                            
                     Text("Task List")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.system(size: 18))
                         .fontWeight(.medium)
-                        .padding(.horizontal, 24)
+                        
+                        
+                        NavigationLink {
+                            AllCompleteView().padding(.horizontal, 24)
+                        } label: {
+                            TaskStatView( title: "All Completed Tasks", count: taskStatsValues.allCompletedCount, icon: "checkmark.circle")
+                        }.opacity(0.8)
+
+                    }.padding(.leading, 24)
+                        .padding(.trailing, 16)
                         .padding(.top, 24)
                     
                     Image(uiImage: UIImage(named: "Bored") ?? UIImage(systemName: "photo")!)

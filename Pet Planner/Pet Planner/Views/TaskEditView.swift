@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TaskEditView: View {
     
+    let trashIcon = UIImage(named: "trash")
+    
     @Environment(\.dismiss) private var dismiss
     @Binding var task: Task
     @State var editConfig: TaskEditConfig = TaskEditConfig()
@@ -38,8 +40,8 @@ struct TaskEditView: View {
                     Button {
                         isConfirmingDelete = true
                     } label: {
-                        Image(systemName: "trash")
-                            .foregroundColor(Color.red)
+                        Image(uiImage: trashIcon!)
+                            
                     }
                     .buttonStyle(BorderlessButtonStyle())
                     .alert(isPresented: $isConfirmingDelete) {

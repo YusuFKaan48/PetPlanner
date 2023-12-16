@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PetDetailView: View {
     let animal: Animals
+    let editIcon = UIImage(named: "edit-pencil")
+    let trashIcon = UIImage(named: "trash")
     @State private var isPresented: Bool = false
     
     @FetchRequest(sortDescriptors: [])
@@ -54,7 +56,7 @@ struct PetDetailView: View {
                     editAnimal = animal
                 } label: {
                     HStack {
-                        Image(systemName: "pencil.circle.fill")
+                        Image(uiImage: editIcon!)
                     }
                 }
                 .sheet(isPresented: $isEditViewPresented) {
@@ -65,8 +67,7 @@ struct PetDetailView: View {
                 Button {
                     isConfirmingDelete = true
                 } label: {
-                    Image(systemName: "trash")
-                        .foregroundColor(Color.red)
+                    Image(uiImage: trashIcon!)
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 .alert(isPresented: $isConfirmingDelete) {

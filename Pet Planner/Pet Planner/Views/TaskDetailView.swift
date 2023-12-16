@@ -18,6 +18,9 @@ struct TaskDetailView: View {
     let task: Task
     let delay = Delay()
     let isSelected: Bool
+    let infoIcon = UIImage(named: "info-circle")
+    let circleIcon = UIImage(named: "circle")
+    let checkCircleIcon = UIImage(named: "check-circle")
     
     @State private var checked: Bool = false
     let onEvent: (TaskCellEvents) -> Void
@@ -35,10 +38,7 @@ struct TaskDetailView: View {
     var body: some View {
         HStack {
             
-            Image(systemName: checked ? "checkmark.circle": "circle")
-                .font(.title)
-                .fontWeight(.regular)
-                .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
+            Image(uiImage: checked ? checkCircleIcon! : circleIcon!)
                 .onTapGesture {
                     checked.toggle()
                     
@@ -60,7 +60,7 @@ struct TaskDetailView: View {
                 
                 VStack(alignment: .trailing, spacing: 4) {
                     
-                    Image(systemName: "info.circle.fill").foregroundColor(Color(.sRGB, red: 24/255, green: 6/255, blue: 20/255, opacity: 0.7))
+                    Image(uiImage: infoIcon!)
                         .opacity(isSelected ? 1.0: 0.0)
                         .onTapGesture {
                             onEvent(.onEdit)
