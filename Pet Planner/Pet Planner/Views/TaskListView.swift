@@ -42,12 +42,17 @@ struct TaskListView: View {
     var body: some View {
         VStack {
             if tasks.isEmpty {
+                Image(uiImage: UIImage(named: "Food") ?? UIImage(systemName: "photo")!)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                
                 Text("There are no tasks.")
                     .frame(maxWidth: .infinity, alignment: .center)
                     .font(.system(size: 12))
                     .fontWeight(.medium)
                     .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
-                    .padding(.top, 12)
+             //       .padding(.top, 12)
             } else {
                 LazyVStack {
                     ForEach(tasks) { task in

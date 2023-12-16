@@ -69,7 +69,7 @@ struct HomeView: View {
                                     }
                                 }
                             }
-                            .padding(.leading, 24)
+                            .padding(.horizontal, 24)
                             .frame(height: 90)
                         }
                     }  else {
@@ -80,12 +80,19 @@ struct HomeView: View {
                             .fontWeight(.medium)
                             .padding(.horizontal, 24)
                         
+                        Image(uiImage: UIImage(named: "Animal") ?? UIImage(systemName: "photo")!)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200, height: 200)
+                            
+
+                        
                         Text("Where did the animals go?")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .font(.system(size: 12))
                             .fontWeight(.medium)
                             .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
-                            .padding(.vertical, 12)
+                        //    .padding(.vertical, 12)
                     }
                     
                     Text("Today's total.")
@@ -130,14 +137,20 @@ struct HomeView: View {
                             .font(.system(size: 18))
                             .fontWeight(.medium)
                             .padding(.horizontal, 24)
-                            .padding(.top, 24)
+                            .padding(.top, 12)
+                        
+                        Image(uiImage: UIImage(named: "Bored") ?? UIImage(systemName: "photo")!)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200, height: 200)
+
                         
                         Text("There is nothing we can do.")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .font(.system(size: 12))
                             .fontWeight(.medium)
                             .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
-                            .padding(.top, 12)
+                   //         .padding(.top, 12)
                         
                         Spacer()
                     }

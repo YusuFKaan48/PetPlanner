@@ -117,6 +117,8 @@ struct NewTaskView: View {
         
                 Button {
                     onSave(title, isDateEnabled ? date : nil, isTimeEnabled ? time : nil, notes)
+                    let userData = UserData(title: title, body: notes, date: isDateEnabled ? date : nil, time: isTimeEnabled ? time : nil)
+                    NotificationManager.scheduleNotification(userData: userData)
                     dismiss()
                 } label: {
                     Text("Save")

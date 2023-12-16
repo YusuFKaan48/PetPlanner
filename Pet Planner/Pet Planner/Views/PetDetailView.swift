@@ -100,6 +100,11 @@ struct PetDetailView: View {
                         
                         TaskListView(tasks: taskResults).padding(.horizontal, 24).padding(.top, 8)
                     }  else {
+                        Image(uiImage: UIImage(named: "Play") ?? UIImage(systemName: "photo")!)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200, height: 200)
+                        
                         Text("\(animal.name ?? "Unknown")'s has no tasks.")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .font(.system(size: 12))

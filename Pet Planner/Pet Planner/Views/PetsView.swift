@@ -40,6 +40,11 @@ struct PetsView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     if myAnimalResults.isEmpty {
+                        Image(uiImage: UIImage(named: "News") ?? UIImage(systemName: "photo")!)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200, height: 200)
+                        
                         Text("No pets here...")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .font(.system(size: 12))
@@ -93,7 +98,7 @@ struct PetsView: View {
                     .font(.system(size: 18))
                     .fontWeight(.medium)
                     .padding(.horizontal, 24)
-                    .padding(.top, 12)
+                    
                 
                 HStack(spacing: 16) {
                     NavigationLink {
@@ -131,6 +136,11 @@ struct PetsView: View {
                         .fontWeight(.medium)
                         .padding(.horizontal, 24)
                         .padding(.top, 12)
+                    
+                    Image(uiImage: UIImage(named: "Bored") ?? UIImage(systemName: "photo")!)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
                     
                     Text("There is nothing we can do.")
                         .frame(maxWidth: .infinity, alignment: .center)
