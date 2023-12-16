@@ -153,7 +153,13 @@ struct TaskEditView: View {
                 
                 Button() {
                     do {
-                        let _ = try AnimalService.updateTask(task: task, editConfig: editConfig)
+                        let updated = try AnimalService.updateTask(task: task, editConfig: editConfig)
+                            if updated {
+                                if task.taskDate != nil || task.taskTime != nil {
+                                    let userData = UserData(title: task.title, body: task.notes, date: task.taskDate, time: task.taskTime)
+                                    NotificationManager.scheduleNotification(userData: userData)
+                                }
+                            }
                     } catch {
                         print(error)
                     }

@@ -93,49 +93,34 @@ struct PetsView: View {
                     }
                 }
                 
-                Text("General total.")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 18))
-                    .fontWeight(.medium)
-                    .padding(.horizontal, 24)
-                    
-                
-                HStack(spacing: 16) {
-                    NavigationLink {
-                        AllCompleteView().padding(.horizontal, 24)
-                    } label: {
-                        TaskStatView( title: "done", count: taskStatsValues.allCompletedCount, icon: "checkmark.circle")
-                    }
-                    
-                    Spacer()
-                    
-                    NavigationLink {
-                        AllUncompleteView().padding(.horizontal, 24)
-                    } label: {
-                        TaskStatView( title: "undone", count: taskStatsValues.allCount, icon: "circle")
-                    }
-                }.padding(.horizontal, 24)
-                    .onAppear {
-                        taskStatsValues = taskStatBuilder.build(myListResults: myListResults)
-                    }
-                
                 if !allResults.isEmpty {
-                    Text("Task list.")
+                    HStack(alignment: .bottom) {
+                            
+                    Text("Task List")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.system(size: 18))
                         .fontWeight(.medium)
-                        .padding(.horizontal, 24)
-                        .padding(.top, 12)
+                        
+                        
+                        NavigationLink {
+                            AllCompleteView().padding(.horizontal, 24)
+                        } label: {
+                            TaskStatView( title: "All Completed Tasks", count: taskStatsValues.allCompletedCount, icon: "checkmark.circle")
+                        }.opacity(0.8)
+
+                    }.padding(.leading, 24)
+                        .padding(.trailing, 16)
+                        .padding(.top, 24)
                     
                     TaskListView(tasks: allResults).padding(.horizontal, 24).padding(.top, 8)
                     
                 } else {
-                    Text("Task list.")
+                    Text("Task List")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.system(size: 18))
                         .fontWeight(.medium)
                         .padding(.horizontal, 24)
-                        .padding(.top, 12)
+                        .padding(.top, 24)
                     
                     Image(uiImage: UIImage(named: "Bored") ?? UIImage(systemName: "photo")!)
                         .resizable()

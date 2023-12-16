@@ -13,40 +13,18 @@ struct TaskStatView: View {
     var count: Int?
     let icon: String
     
+    let chevronIcon = UIImage(named: "nav-arrow-right")
+    
     var body: some View {
-        HStack {
-            HStack(spacing: 12) {
-                Image(systemName: icon)
-                    .font(.title)
-                    .fontWeight(.regular)
-                    .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
-                    .padding(.leading, 16)
-                
-                if let count {
-                    Text("\(count)")
-                        .font(.system(size: 14))
-                        .foregroundColor(.black)
-                        .fontWeight(.medium)
-                }
-                
+            HStack(spacing: 4) {
                 Text(title)
-                    .font(.system(size: 14))
+                    .font(.system(size: 12))
                     .opacity(1.0)
                     .fontWeight(.medium)
                     .foregroundColor(.black)
+                
+                Image(uiImage: chevronIcon!)
             }
-            Spacer()
-        }
-        .frame(maxWidth: .infinity)
-        .frame(height: 70)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color(.sRGB, red: 224/255, green: 224/255, blue: 224/255, opacity: 1.0), lineWidth: 1)
-        )
-        .foregroundColor(Color.black)
     }
 }
 
-#Preview {
-    TaskStatView(title: "isDone", count: 9, icon: "circle")
-}

@@ -48,6 +48,12 @@ struct NewTaskView: View {
                     ).padding(.horizontal, 24)
                     .padding(.vertical, 12)
                 
+                Text("Please do not leave the name field empty.")
+                    .fontWeight(.medium)
+                    .font(.system(size: 12))
+                    .foregroundColor(.black).opacity(0.3)
+                    .padding(.top, 4)
+                
                 Text("Task Notes")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 14))

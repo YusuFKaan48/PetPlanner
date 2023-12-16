@@ -72,8 +72,14 @@ struct AddPetView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
                         .frame(height: 50)
-                )
-                .padding(24)
+                ).padding(24)
+            
+            Text("Please do not leave the name field empty.")
+                .fontWeight(.medium)
+                .font(.system(size: 12))
+                .foregroundColor(.black).opacity(0.3)
+            
+                
             
             Spacer()
             
@@ -96,6 +102,7 @@ struct AddPetView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 24)
             .foregroundColor(.white)
+            .foregroundColor(isFormValid ? .white : .gray)
             .disabled(!isFormValid)
         }
         .onTapGesture {

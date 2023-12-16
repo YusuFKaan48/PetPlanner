@@ -87,7 +87,7 @@ struct PetDetailView: View {
             }
             .padding(.horizontal, 24)
             
-            Text("\(animal.name ?? "Unknown")'s Tasks.")
+            Text("\(animal.name ?? "Unknown")'s Tasks")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.system(size: 18))
                 .fontWeight(.medium)

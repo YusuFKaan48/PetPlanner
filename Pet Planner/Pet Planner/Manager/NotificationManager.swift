@@ -25,11 +25,11 @@ class NotificationManager {
                 content.title = "Pet Planner"
                 
                 if let notes = userData.body, !notes.isEmpty {
-                    content.body = "\(taskTitle) (\(notes))"
+                    content.body = "\(taskTitle): \(notes)"
                 } else {
                     content.body = taskTitle
                 }
-            } 
+            }
         
 
     

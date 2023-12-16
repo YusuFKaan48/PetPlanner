@@ -33,11 +33,12 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     if !todayResults.isEmpty {
-                        Text("Today's have a task.")
+                        Text("Today's Have a Task")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.system(size: 18))
                             .fontWeight(.medium)
                             .padding(.horizontal, 24)
+                            .padding(.top, 12)
                     
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 32) {
@@ -74,11 +75,12 @@ struct HomeView: View {
                         }
                     }  else {
                         
-                        Text("Today's have a task.")
+                        Text("Today's Have a Task")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.system(size: 18))
                             .fontWeight(.medium)
                             .padding(.horizontal, 24)
+                            .padding(.top, 12)
                         
                         Image(uiImage: UIImage(named: "Animal") ?? UIImage(systemName: "photo")!)
                             .resizable()
@@ -92,52 +94,35 @@ struct HomeView: View {
                             .font(.system(size: 12))
                             .fontWeight(.medium)
                             .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
-                        //    .padding(.vertical, 12)
                     }
                     
-                    Text("Today's total.")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.system(size: 18))
-                        .fontWeight(.medium)
-                        .padding(.horizontal, 24)
-                        .padding(.top, 12)
-                    
-                    HStack(spacing: 16) {
-                        NavigationLink {
-                            TodayCompleteView().padding(.horizontal, 24)
-                        } label: {
-                            TaskStatView( title: "done", count: taskStatsValues.todaysCompletedCount, icon: "checkmark.circle")
-                        }
-                        
-                        Spacer()
-                        
-                        NavigationLink {
-                            TodayUncompleteView().padding(.horizontal, 24)
-                        } label: {
-                            TaskStatView( title: "undone", count: taskStatsValues.todayCount, icon: "circle")
-                        }
-                    }.padding(.horizontal, 24)
-                        .onAppear {
-                            taskStatsValues = taskStatBuilder.build(myListResults: myListResults)
-                        }
-                    
                     if !todayResults.isEmpty {
-                        Text("Daily task list.")
+                        HStack(alignment: .bottom) {
+                        Text("Daily Task List")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.system(size: 18))
                             .fontWeight(.medium)
-                            .padding(.horizontal, 24)
-                            .padding(.top, 12)
+                            
+                            
+                            
+                            NavigationLink {
+                                TodayCompleteView().padding(.horizontal, 24)
+                            } label: {
+                                TaskStatView( title: "Completed Tasks", count: taskStatsValues.todaysCompletedCount, icon: "checkmark.circle")
+                            }.opacity(0.8)
+                        }.padding(.leading, 24)
+                            .padding(.trailing, 16)
+                            .padding(.top, 24)
                         
                         TaskListView(tasks: todayResults).padding(.horizontal, 24).padding(.top, 8)
                         
                     }  else {
-                        Text("Daily task list.")
+                        Text("Daily Task List")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.system(size: 18))
                             .fontWeight(.medium)
                             .padding(.horizontal, 24)
-                            .padding(.top, 12)
+                            .padding(.top, 24)
                         
                         Image(uiImage: UIImage(named: "Bored") ?? UIImage(systemName: "photo")!)
                             .resizable()
@@ -150,7 +135,6 @@ struct HomeView: View {
                             .font(.system(size: 12))
                             .fontWeight(.medium)
                             .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
-                   //         .padding(.top, 12)
                         
                         Spacer()
                     }
