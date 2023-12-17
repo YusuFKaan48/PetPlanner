@@ -61,7 +61,7 @@ struct PetsView: View {
                                         Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
                                             .resizable()
                                             .scaledToFill()
-                                            .frame(width: 36, height: 36)
+                                            .frame(width: 48, height: 48)
                                             .cornerRadius(25)
                                     } else {
                                         

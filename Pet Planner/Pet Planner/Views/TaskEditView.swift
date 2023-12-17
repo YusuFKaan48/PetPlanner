@@ -16,6 +16,7 @@ struct TaskEditView: View {
     @State var editConfig: TaskEditConfig = TaskEditConfig()
     @State private var isConfirmingDelete: Bool = false
     
+    
     private var isFormValid: Bool {
         !editConfig.title.isEmpty
     }

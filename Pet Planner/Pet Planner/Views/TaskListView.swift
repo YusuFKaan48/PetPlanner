@@ -47,12 +47,11 @@ struct TaskListView: View {
                     .scaledToFit()
                     .frame(width: 200, height: 200)
                 
-                Text("There are no tasks.")
+                Text("There are no completed tasks.")
                     .frame(maxWidth: .infinity, alignment: .center)
                     .font(.system(size: 12))
                     .fontWeight(.medium)
                     .foregroundColor((Color(.sRGB, red: 210/255, green: 211/255, blue: 213/255, opacity: 1.0)))
-             //       .padding(.top, 12)
             } else {
                 LazyVStack {
                     ForEach(tasks) { task in

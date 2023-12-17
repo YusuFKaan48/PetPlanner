@@ -11,6 +11,7 @@ struct PetDetailView: View {
     let animal: Animals
     let editIcon = UIImage(named: "edit-pencil")
     let trashIcon = UIImage(named: "trash")
+    let emptyIcon = UIImage(named: "trash 1")
     @State private var isPresented: Bool = false
     
     @FetchRequest(sortDescriptors: [])
@@ -37,15 +38,22 @@ struct PetDetailView: View {
     
     var body: some View {
         NavigationStack {
-            HStack {
+            HStack(alignment: .top) {
+                Image(uiImage: emptyIcon!)
+                
+                Spacer ()
+                
+                VStack {
                 if let imageData = animal.picture {
                     Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 64, height: 64)
+                        .frame(width: 96, height: 96)
                         .cornerRadius(125)
                         .padding(.trailing, 8)
                 }
+                    
+                    HStack {
                 
                 Text("\(animal.name ?? "Unknown")")
                     .fontWeight(.semibold)
@@ -61,6 +69,8 @@ struct PetDetailView: View {
                 }
                 .sheet(isPresented: $isEditViewPresented) {
                     AnimalEditView(animals: $editAnimal, animal: editAnimal)
+                }
+                    }
                 }
                 Spacer()
                 
@@ -85,8 +95,7 @@ struct PetDetailView: View {
                         secondaryButton: .cancel()
                     )
                 }
-            }
-            .padding(.horizontal, 24)
+            }.padding(.horizontal, 24)
             
             Text("\(animal.name ?? "Unknown")'s Tasks")
                 .frame(maxWidth: .infinity, alignment: .leading)

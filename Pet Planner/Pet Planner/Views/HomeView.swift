@@ -56,7 +56,7 @@ struct HomeView: View {
                                             } else {
                                                 Image(systemName: "photo")
                                                     .resizable()
-                                                    .frame(width: 56, height: 56)
+                                                    .frame(width: 64, height: 64)
                                                     .cornerRadius(36)
                                             }
                                             VStack(alignment: .center) {
