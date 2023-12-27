@@ -16,14 +16,20 @@ struct TaskEditView: View {
     @State var editConfig: TaskEditConfig = TaskEditConfig()
     @State private var isConfirmingDelete: Bool = false
     
+    let emptyIcon = UIImage(named: "Empty")
+    
     
     private var isFormValid: Bool {
         !editConfig.title.isEmpty
     }
     
     var body: some View {
+       
+        
         NavigationView {
+           
             VStack {
+                ScrollView {
                     HStack(spacing: 8) {
                     if let imageData = task.animals?.picture,
                        let animalName = task.animals?.name {
@@ -33,6 +39,12 @@ struct TaskEditView: View {
                             .frame(width: 64, height: 64)
                             .cornerRadius(125)
                         Text(animalName).fontWeight(.semibold).foregroundColor(Color.black)
+                    } else {
+                        Image(uiImage: emptyIcon!)
+                            .resizable()
+                            .frame(width: 64, height: 64)
+                            .cornerRadius(36)
+                        Text(task.animals?.name ?? "name").fontWeight(.semibold).foregroundColor(Color.black)
                     }
               
                     
@@ -62,6 +74,7 @@ struct TaskEditView: View {
                     }
                 }.padding(.horizontal,24)
                     .padding(.bottom, 24)
+                    .padding(.top, 24)
                 
                 Text("Task Details")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -84,7 +97,8 @@ struct TaskEditView: View {
                             .frame( height: 50)
                     )
                 
-                    .padding(24)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 12)
                 
                 Text("Task Notes")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -100,9 +114,13 @@ struct TaskEditView: View {
                         
                             .frame( height: 50)
                     )
-                    .padding(24)
+                    .padding(.horizontal, 24)
+                    .padding(.top, 12)
+                    .padding(.bottom, 14)
     
-                Divider().padding(24)
+                Divider().padding(.horizontal, 24)
+                    .padding(.vertical, 12)
+                    
                 
                 Text("Task Time Details")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -180,6 +198,7 @@ struct TaskEditView: View {
                 }
                 .padding(.horizontal, 24)
                 .padding(.top, 24)
+                .padding(.bottom, 12)
                 .foregroundColor(.white)
                 .disabled(!isFormValid)
             }.onTapGesture {
@@ -189,7 +208,7 @@ struct TaskEditView: View {
             .onAppear {
                 editConfig = TaskEditConfig(task: task)
             }
-            
         }
+    }
     }
 }

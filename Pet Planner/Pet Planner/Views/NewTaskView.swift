@@ -59,7 +59,7 @@ struct NewTaskView: View {
                     .font(.system(size: 14))
                     .fontWeight(.regular)
                     .padding(.horizontal, 24)
-                    .padding(.top, 12)
+                    .padding(.top, 6)
                 
                 TextField("Add note...", text: $notes).padding(.horizontal, 24)
                     .background(
@@ -67,9 +67,11 @@ struct NewTaskView: View {
                             .fill(Color(.sRGB, red: 242/255, green: 242/255, blue: 242/255, opacity: 1.0))
                             .frame( height: 50)
                     ).padding(.horizontal, 24)
-                    .padding(.vertical, 12)
+                    .padding(.top, 12)
+                    .padding(.bottom, 14)
                 
-                Divider().padding(24)
+                Divider().padding(.horizontal, 24)
+                    .padding(.vertical, 12)
                 
                 Text("Task Time Details")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -138,7 +140,8 @@ struct NewTaskView: View {
                         .cornerRadius(8)
                 }
                 .padding(.horizontal, 24)
-                .padding(.top, 12)
+                .padding(.top, 24)
+                .padding(.bottom, 12)
                 .foregroundColor(.white)
                 .disabled(!isFormValid)
             }

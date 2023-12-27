@@ -30,6 +30,8 @@ struct PetDetailView: View {
     @State private var isEditViewPresented: Bool = false
     @State private var editAnimal: Animals = Animals()
     
+    let empty2Icon = UIImage(named: "Empty")
+    
     init(animal: Animals) {
         self.animal = animal
         self.editAnimal = animal
@@ -46,6 +48,13 @@ struct PetDetailView: View {
                 VStack {
                 if let imageData = animal.picture {
                     Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 96, height: 96)
+                        .cornerRadius(125)
+                        .padding(.trailing, 8)
+                } else {
+                    Image(uiImage: empty2Icon!)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 96, height: 96)

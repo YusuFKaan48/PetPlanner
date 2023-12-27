@@ -21,6 +21,8 @@ struct HomeView: View {
     @FetchRequest(fetchRequest: AnimalService.tasksByStatType(statType: .todayCompleted))
     private var todayCompletedResults: FetchedResults<Task>
     
+    let emptyIcon = UIImage(named: "Empty")
+    
     var body: some View {
 
         NavigationStack {
@@ -33,7 +35,7 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     if !todayResults.isEmpty {
-                        Text("Today's Have a Task")
+                        Text("Today Have a Task")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.system(size: 18))
                             .fontWeight(.medium)
@@ -54,7 +56,7 @@ struct HomeView: View {
                                                     .frame(width: 64, height: 64)
                                                     .cornerRadius(36)
                                             } else {
-                                                Image(systemName: "photo")
+                                                Image(uiImage: emptyIcon!)
                                                     .resizable()
                                                     .frame(width: 64, height: 64)
                                                     .cornerRadius(36)
@@ -75,7 +77,7 @@ struct HomeView: View {
                         }
                     }  else {
                         
-                        Text("Today's Have a Task")
+                        Text("Today Have a Task")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.system(size: 18))
                             .fontWeight(.medium)

@@ -97,6 +97,4 @@ struct TaskDetailView: View {
     }
 }
 
-#Preview {
-    TaskDetailView(task: PreviewData.tasks, isSelected: false, onEvent: { _ in })
-}
+

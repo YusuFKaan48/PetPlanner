@@ -28,6 +28,8 @@ struct PetsView: View {
     @State private var isAddButtonTapped: Bool = false
     @State private var isButtonScaled = false
     
+    let emptyIcon = UIImage(named: "Empty")
+    
     var body: some View {
         NavigationStack {
             
@@ -61,10 +63,13 @@ struct PetsView: View {
                                         Image(uiImage: UIImage(data: imageData) ?? UIImage(systemName: "photo")!)
                                             .resizable()
                                             .scaledToFill()
-                                            .frame(width: 48, height: 48)
+                                            .frame(width: 42, height: 42)
                                             .cornerRadius(25)
-                                    } else {
-                                        
+                                    }  else {
+                                        Image(uiImage: emptyIcon!)
+                                            .resizable()
+                                            .frame(width: 42, height: 42)
+                                            .cornerRadius(25)
                                     }
                                     VStack(alignment: .leading) {
                                         Text(animal.name ?? "Unknown")
@@ -72,7 +77,7 @@ struct PetsView: View {
                                             .foregroundColor(.black)
                                             .fontWeight(.medium)
                                         
-                                        Text("Have a: \(animalUncompletedTasks.count) task")
+                                        Text("Have \(animalUncompletedTasks.count) task")
                                             .font(.system(size: 14))
                                             .foregroundColor(.black.opacity(0.5))
                                     }

@@ -65,7 +65,6 @@ struct AddPetView: View {
             
             Text("What's your pet's name?")
                 .fontWeight(.medium)
-                .padding(.bottom, 12)
             
             TextField("Pet's name", text: $name).padding(.horizontal, 24)
                 .background(
@@ -108,7 +107,7 @@ struct AddPetView: View {
         .onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
-        .padding(.top, 160)
+        .padding(.top, 80)
         .onAppear {
             requestPhotoLibraryPermission()
         }
